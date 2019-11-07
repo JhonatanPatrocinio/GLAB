@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { View, Text, StyleSheet, ImageBackground, Image, Dimensions, TouchableOpacity, Alert } from 'react-native';
 
 
@@ -10,9 +10,10 @@ import Icon from 'react-native-vector-icons/Ionicons'
 
 const { width: WIDTH } = Dimensions.get('window')
 
-export default class App extends Component {
+export default function Cadastro({navigation}) {
 
-  render() {
+
+  
     return (
 
       <ImageBackground source={bgImage} style={styles.backgroundContainer}>
@@ -41,7 +42,7 @@ export default class App extends Component {
                   onPress: () => console.log('Cancel Pressed'),
                   style: 'Não',
                 },
-                { text: 'Sim', onPress: () => console.log('OK Pressed') },
+                { text: 'Sim', onPress: () => navigation.navigate('CadasAlu') },
               ],
               { cancelable: false },
             )}
@@ -63,7 +64,7 @@ export default class App extends Component {
                   onPress: () => console.log('Cancel Pressed'),
                   style: 'Não',
                 },
-                { text: 'Sim', onPress: () => console.log('OK Pressed') },
+                { text: 'Sim', onPress: () => navigation.navigate('CadasPro')  },
               ],
               { cancelable: false },
             )}
@@ -81,7 +82,7 @@ export default class App extends Component {
 
     );
 
-  }
+  
 }
 
 

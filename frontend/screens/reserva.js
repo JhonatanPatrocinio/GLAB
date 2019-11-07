@@ -1,33 +1,32 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ImageBackground, Image, Dimensions, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, Picker, StyleSheet, ImageBackground, Image, Dimensions, TouchableOpacity, Alert, Button } from 'react-native';
 
 
 import bgImage from '../src/img/background.jpg'
 import logo from '../src/img/Glab.png'
+import Icon from 'react-native-vector-icons/Ionicons'
 
 
-import {Calendar} from 'react-native-calendars'
-import {LocaleConfig} from 'react-native-calendars';
+
 import { ScrollView } from 'react-native-gesture-handler';
+import DateTimePicker from "react-native-modal-datetime-picker";
 
-LocaleConfig.locales['br'] = {
-  monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
-  monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dec'],
-  dayNames: ['Domingo','Segunda','terça','Quarta','Quinta','Sexta','Sabado'],
-  dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sab'],
-  today: 'Hoje\'Hoj'
-};
-LocaleConfig.defaultLocale = 'br';
 
 const { width: WIDTH } = Dimensions.get('window')
 
-export default class Reserva extends Component {
 
-  render() {
-    return (
+export default function Reserva({ navigation }) {
 
-      <ImageBackground source={bgImage} style={styles.backgroundContainer}>
-        <ScrollView style={{ flex: 1 }}>
+
+
+  async function tela2() {
+    navigation.navigate('PerfilPro');
+  }
+
+  return (
+
+    <ImageBackground source={bgImage} style={styles.backgroundContainer}>
+      <ScrollView style={{ flex: 1 }}>
         <View style={styles.backgroundContainer}>
 
           <View><Text style={styles.logoText}>Reservas</Text></View>
@@ -40,45 +39,31 @@ export default class Reserva extends Component {
             <Image source={logo} />
           </View>
 
-          <View style={styles.inputContainer}>
-              <Text style={styles.titulos}>Espaço</Text>
-              <Picker
-                style={styles.pickerComponete}
-                selectedValue={this.state.selecionado}
-                onValueChange={
-                  (itemValor, itemIndex) =>
-                    this.setState({
-                      selecionado: itemValor
-                    })
-                }>
-                <Picker.Item label="..." value="" />
-                <Picker.Item label="Laboratorio 1" value="lab1" />
-                <Picker.Item label="Espaço de conversa" value="ep1" />
+          <Selecionador />
 
-              </Picker>
-            </View>
+          <SelecionaData />
 
-          <Calendar
-          style={{borderWidth: 2,
-          borderColor: 'black',
-          height: 50,
-          width: WIDTH - 50,
-          borderRadius: 25,
-          marginEnd:30
-          }}
-          />
+          <TouchableOpacity onPress={tela2} style={styles.btnLogin} >
+            <Text style={styles.text}>Voltar</Text>
+            <Icon name={'ios-undo'} size={22} color={'rgba(255, 255, 255, 0.7)'}
+              style={styles.inputIcon} />
+          </TouchableOpacity>
 
-          
-
+          <TouchableOpacity onPress={tela2} style={styles.btnVreserva} >
+            <Text style={styles.text}>Efetuar Reserva</Text>
+            <Icon name={'ios-save'} size={22} color={'rgba(255, 255, 255, 0.7)'}
+              style={styles.inputIcon} />
+          </TouchableOpacity>
 
         </View>
-        </ScrollView>
-      </ImageBackground>
+      </ScrollView>
+    </ImageBackground>
 
-    );
+  );
 
-  }
+
 }
+
 
 
 
@@ -131,27 +116,67 @@ const styles = StyleSheet.create({
   },
   inputIcon: {
     position: 'absolute',
-    top: 20,
-    left: 27
+    top: 30,
+    left: 22
+  },
+  inputIcon2: {
+    position: 'absolute',
+    top: 30,
+    left: 62
   },
   btnEye: {
     position: 'absolute',
-    top: 8,
+    top: 10,
     right: 37
   },
   btnLogin: {
-    width: WIDTH - 100,
-    height: 100,
-    borderRadius: 25,
+    width: 60,
+    height: 60,
+    borderRadius: 20,
     backgroundColor: '#432577',
     justifyContent: 'center',
-    marginTop: 20
+    marginTop: 10,
+
+    right:35,
+    end: 30
+  },
+  btnReserva: {
+    width: 60,
+    height: 60,
+    borderRadius: 20,
+    backgroundColor: '#432577',
+    justifyContent: 'center',
+    marginTop: -60,
+    right: 35,
+    end: 30
+  },
+  btnVreserva: {
+    width: 60,
+    height: 60,
+    borderRadius: 20,
+    backgroundColor: '#432577',
+    justifyContent: 'center',
+    marginTop: -60,
+    right: -35,
+    end: 30
+  },
+  btnSair: {
+    width: 60,
+    height: 60,
+    borderRadius: 20,
+    backgroundColor: '#432577',
+    justifyContent: 'center',
+    marginTop: -60,
+    right: -110,
+    end: 30
   },
   text: {
     color: 'rgba(255, 255, 255, 0.7)',
-    fontSize: 16,
+    fontSize: 10,
     textAlign: 'center',
-    left: 10
+    fontWeight: 'bold',
+    left: 1,
+    top: -13
   },
   rodape: {
     color: '#ffffff',
@@ -166,5 +191,136 @@ const styles = StyleSheet.create({
     color: 'rgba(255, 255, 255, 1)',
     marginHorizontal: 25
 
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF'
+  },
+  button: {
+    width: 250,
+    height: 50,
+    borderRadius: 25,
+    justifyContent: 'center',
+    marginTop: 15
+  },
+  textData: {
+    fontSize: 18,
+    color: 'white',
+    textAlign: 'center'
   }
 });
+
+
+class Selecionador extends Component {
+
+  state = {
+    selecionado: ''
+  }
+
+  render() {
+
+
+    return (
+
+      <View style={styles.inputContainer}>
+        <Text style={styles.titulos}>Espaço</Text>
+        <Picker
+          style={styles.pickerComponete}
+          selectedValue={this.state.selecionado}
+          onValueChange={
+            (itemValor, itemIndex) =>
+              this.setState({
+                selecionado: itemValor
+              })
+          }>
+          <Picker.Item label="..." value="" />
+          <Picker.Item label="Laboratorio 1" value="lab1" />
+          <Picker.Item label="Laboratorio 2" value="lab2" />
+
+        </Picker>
+      </View>
+
+
+    );
+  }
+}
+
+
+class SelecionaData extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isDateTimePickerVisible: false
+    };
+  }
+
+  showDateTimePicker = () => {
+    this.setState({ isDateTimePickerVisible: true });
+  };
+
+  hideDateTimePicker = () => {
+    this.setState({ isDateTimePickerVisible: false });
+  };
+
+  handleDatePicked = date => {
+    console.log("A date has been picked: ", date);
+    this.hideDateTimePicker();
+  };
+
+  render() {
+    return (
+      <>
+
+        <TouchableOpacity style={styles.button} onPress={this.showDateTimePicker}>
+          <Text style={styles.textData} >Selecionar Data e Horario</Text>
+        </TouchableOpacity>
+
+        <DateTimePicker
+          isVisible={this.state.isDateTimePickerVisible}
+          onConfirm={this.handleDatePicked}
+          onCancel={this.hideDateTimePicker}
+          mode={'datetime'}
+          titleIOS={'Selecione data e horario'}
+          is24Hour={true}
+          locale="pt_BR"
+
+
+        />
+
+
+      </>
+
+
+    );
+  }
+}
+
+/*
+
+<TouchableOpacity onPress={tela3} style={styles.btnReserva} >
+<Text style={styles.text}>Voltar</Text>
+<Icon name={'ios-create'} size={22} color={'rgba(255, 255, 255, 0.7)'}
+  style={styles.inputIcon} />
+</TouchableOpacity>
+
+<TouchableOpacity onPress={() => Alert.alert(
+'Confirmação',
+'Tem certeza que deseja efetuar a reserva?',
+[
+  {
+    text: 'Não',
+    onPress: () => console.log('Cancel Pressed'),
+    style: 'Não',
+  },
+  { text: 'Sim', onPress: () => navigation.navigate('PerfilPro') },
+],
+{ cancelable: false },
+)}
+style={styles.btnVreserva} >
+<Text style={styles.text}>Efetuar Reserva</Text>
+<Icon name={'ios-search'} size={22} color={'rgba(255, 255, 255, 0.7)'}
+  style={styles.inputIcon} />
+</TouchableOpacity>
+*/

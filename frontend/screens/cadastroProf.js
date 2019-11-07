@@ -2,21 +2,18 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, ImageBackground, Image, TextInput, Dimensions, TouchableOpacity, Picker, KeyboardAvoidingView, Alert} from 'react-native';
 
 
-import bgImage from './src/img/background.jpg'
-import logo from './src/img/Glab.png'
+import bgImage from '../src/img/background.jpg'
+import logo from '../src/img/Glab.png'
 
 import { ScrollView } from 'react-native-gesture-handler';
 
 const { width: WIDTH } = Dimensions.get('window')
 
-export default class CadastroProf extends Component {
+export default function CadastroProf({navigation}) {
 
-  state = {
-    selecionado: ''
-  }
+ 
 
-
-  render() {
+  
     return (
 
       <ImageBackground source={bgImage} style={styles.backgroundContainer}>
@@ -40,23 +37,7 @@ export default class CadastroProf extends Component {
               />
             </View>
 
-            <View style={styles.inputContainer}>
-              <Text style={styles.titulos}>Centro</Text>
-              <Picker
-                style={styles.pickerComponete}
-                selectedValue={this.state.selecionado}
-                onValueChange={
-                  (itemValor, itemIndex) =>
-                    this.setState({
-                      selecionado: itemValor
-                    })
-                }>
-                <Picker.Item label="..." value="" />
-                <Picker.Item label="CCET" value="CCET" />
-                <Picker.Item label="CJSA" value="CJSA" />
-
-              </Picker>
-            </View>
+            <Selecionador/>
 
             <View style={styles.inputContainer}>
               <Text style={styles.titulos}>Nome</Text>
@@ -110,7 +91,7 @@ export default class CadastroProf extends Component {
                   onPress: () => console.log('Cancel Pressed'),
                   style: 'Não',
                 },
-                { text: 'Sim', onPress: () => console.log('OK Pressed') },
+                { text: 'Sim', onPress: () => navigation.navigate('PerfilPro') },
               ],
               { cancelable: false },
             )}
@@ -128,7 +109,7 @@ export default class CadastroProf extends Component {
 
     );
 
-  }
+  
 }
 
 
@@ -220,3 +201,35 @@ const styles = StyleSheet.create({
 
   }
 });
+
+
+class Selecionador extends Component {
+
+  state = {
+    selecionado: ''
+  }
+
+  render() {
+
+
+    return (
+      <View style={styles.inputContainer}>
+        <Text style={styles.titulos}>Centro</Text>
+        <Picker
+          style={styles.pickerComponete}
+          selectedValue={this.state.selecionado}
+          onValueChange={
+            (itemValor, itemIndex) =>
+              this.setState({
+                selecionado: itemValor
+              })
+          }>
+          <Picker.Item label="..." value="" />
+          <Picker.Item label="CCET" value="CCET" />
+          <Picker.Item label="CJSA" value="CJSA" />
+
+        </Picker>
+      </View>
+    );
+  }
+}

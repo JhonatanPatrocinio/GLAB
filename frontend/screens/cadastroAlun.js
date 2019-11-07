@@ -2,21 +2,17 @@ import React, { Component } from 'react';
 import { ScrollView, View, Text, StyleSheet, ImageBackground, Image, TextInput, Dimensions, TouchableOpacity, Picker, KeyboardAvoidingView, Alert } from 'react-native';
 
 
-import bgImage from './src/img/background.jpg'
-import logo from './src/img/Glab.png'
+import bgImage from '../src/img/background.jpg'
+import logo from '../src/img/Glab.png'
 
 
 
 const { width: WIDTH } = Dimensions.get('window')
 
-export default class CadastroAlun extends Component {
+export default function CadastroAlun({navigation})  {
 
-  state = {
-    selecionado: ''
-  }
-
-
-  render() {
+ 
+ 
     return (
 
       <ImageBackground source={bgImage} style={styles.backgroundContainer}>
@@ -39,23 +35,7 @@ export default class CadastroAlun extends Component {
               />
             </View>
 
-            <View style={styles.inputContainer}>
-              <Text style={styles.titulos}>Curso</Text>
-              <Picker
-                style={styles.pickerComponete}
-                selectedValue={this.state.selecionado}
-                onValueChange={
-                  (itemValor, itemIndex) =>
-                    this.setState({
-                      selecionado: itemValor
-                    })
-                }>
-                <Picker.Item label="..." value="" />
-                <Picker.Item label="Sistemas de informação" value="Si" />
-                <Picker.Item label="Medicina" value="Med" />
-
-              </Picker>
-            </View>
+            <Selecionador/>
 
             <View style={styles.inputContainer}>
               <Text style={styles.titulos}>Nome</Text>
@@ -109,7 +89,7 @@ export default class CadastroAlun extends Component {
                   onPress: () => console.log('Cancel Pressed'),
                   style: 'Não',
                 },
-                { text: 'Sim', onPress: () => console.log('OK Pressed') },
+                { text: 'Sim', onPress: () => navigation.navigate('PerfilAlu') },
               ],
               { cancelable: false },
             )}
@@ -126,7 +106,7 @@ export default class CadastroAlun extends Component {
 
     );
 
-  }
+  
 }
 
 
@@ -217,3 +197,34 @@ const styles = StyleSheet.create({
 
   }
 });
+
+class Selecionador extends Component {
+
+  state = {
+    selecionado: ''
+  }
+
+  render() {
+
+
+    return (
+      <View style={styles.inputContainer}>
+        <Text style={styles.titulos}>Curso</Text>
+        <Picker
+          style={styles.pickerComponete}
+          selectedValue={this.state.selecionado}
+          onValueChange={
+            (itemValor, itemIndex) =>
+              this.setState({
+                selecionado: itemValor
+              })
+          }>
+          <Picker.Item label="..." value="" />
+          <Picker.Item label="Sistemas de informação" value="Si" />
+          <Picker.Item label="Medicina" value="Med" />
+
+        </Picker>
+      </View>
+    );
+  }
+}

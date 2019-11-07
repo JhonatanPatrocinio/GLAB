@@ -2,26 +2,21 @@ import React, { Component } from 'react';
 import { ScrollView, View, Text, StyleSheet, ImageBackground, Image, TextInput, Dimensions, TouchableOpacity, Picker, KeyboardAvoidingView, Alert } from 'react-native';
 
 
-import bgImage from './src/img/background.jpg'
-import logo from './src/img/Glab.png'
+import bgImage from '../src/img/background.jpg'
+import logo from '../src/img/Glab.png'
 import Icon from 'react-native-vector-icons/Ionicons'
 
 
 
 const { width: WIDTH } = Dimensions.get('window')
 
-export default class App extends Component {
-
-  state = {
-    selecionado: ''
-  }
+export default function EditarAluno({ navigation }) {
 
 
-  render() {
-    return (
+  return (
 
-      <ImageBackground source={bgImage} style={styles.backgroundContainer}>
-       <KeyboardAvoidingView behavior='padding'>
+    <ImageBackground source={bgImage} style={styles.backgroundContainer}>
+      <KeyboardAvoidingView behavior='padding'>
         <ScrollView style={{ flex: 1 }} >
           <View style={styles.backgroundContainer}>
             <View><Text style={styles.logoText}>Editar Aluno</Text></View>
@@ -34,30 +29,14 @@ export default class App extends Component {
               <Text style={styles.titulos}>Matricula</Text>
               <TextInput
                 style={styles.input}
-               // placeholder={''}
+                // placeholder={''}
                 placeholderTextColor={'rgba(255, 255, 255, 0.7)'}
                 underlineColorAndroid='transparent'
-                
+
               />
             </View>
 
-            <View style={styles.inputContainer}>
-              <Text style={styles.titulos}>Curso</Text>
-              <Picker
-                style={styles.pickerComponete}
-                selectedValue={this.state.selecionado}
-                onValueChange={
-                  (itemValor, itemIndex) =>
-                    this.setState({
-                      selecionado: itemValor
-                    })
-                }>
-                <Picker.Item label="..." value="" />
-                <Picker.Item label="Sistemas de informação" value="Si" />
-                <Picker.Item label="Medicina" value="Med" />
-
-              </Picker>
-            </View>
+            <Selecionador />
 
             <View style={styles.inputContainer}>
               <Text style={styles.titulos}>Nome</Text>
@@ -101,37 +80,37 @@ export default class App extends Component {
               />
             </View>
 
-            <TouchableOpacity style={styles.btnLogin} 
-            onPress={() => Alert.alert(
-              'Confirmação',
-              'Tem certeza que deseja salvar as alterações?',
-              [
-                {
-                  text: 'Não',
-                  onPress: () => console.log('Cancel Pressed'),
-                  style: 'Não',
-                },
-                { text: 'Sim', onPress: () => console.log('OK Pressed') },
-              ],
-              { cancelable: false },
-            )}
+            <TouchableOpacity style={styles.btnLogin}
+              onPress={() => Alert.alert(
+                'Confirmação',
+                'Tem certeza que deseja salvar as alterações?',
+                [
+                  {
+                    text: 'Não',
+                    onPress: () => console.log('Cancel Pressed'),
+                    style: 'Não',
+                  },
+                  { text: 'Sim', onPress: () => navigation.navigate('PerfilAlu') },
+                ],
+                { cancelable: false },
+              )}
             >
-            <Icon name={'ios-save'} size={28} color={'rgba(255, 255, 255, 0.7)'}
-            style={styles.inputIcon} />
+              <Icon name={'ios-save'} size={28} color={'rgba(255, 255, 255, 0.7)'}
+                style={styles.inputIcon} />
               <Text style={styles.text}>Salvar</Text>
-              
+
             </TouchableOpacity>
 
 
 
           </View>
         </ScrollView>
-        </KeyboardAvoidingView>
-      </ImageBackground>
+      </KeyboardAvoidingView>
+    </ImageBackground>
 
-    );
+  );
 
-  }
+
 }
 
 
@@ -223,3 +202,34 @@ const styles = StyleSheet.create({
 
   }
 });
+
+class Selecionador extends Component {
+
+  state = {
+    selecionado: ''
+  }
+
+  render() {
+
+
+    return (
+      <View style={styles.inputContainer}>
+        <Text style={styles.titulos}>Curso</Text>
+        <Picker
+          style={styles.pickerComponete}
+          selectedValue={this.state.selecionado}
+          onValueChange={
+            (itemValor, itemIndex) =>
+              this.setState({
+                selecionado: itemValor
+              })
+          }>
+          <Picker.Item label="..." value="" />
+          <Picker.Item label="Sistemas de informação" value="Si" />
+          <Picker.Item label="Medicina" value="Med" />
+
+        </Picker>
+      </View>
+    );
+  }
+}

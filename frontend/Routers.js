@@ -1,70 +1,38 @@
-import { Router, Scene, Actions, ActionConst, Drawer } from 'react-native-router-flux'
-import React, { Component } from 'react';
+import { createAppContainer, createSwitchNavigator } from 'react-navigation' 
 
-import perfilProf from './screens/perfilProf'
-import editarProf from './screens/editarProf'
-import cadastro from './screens/cadastro'
-
-export default class Routers extends Component {
-
-  render() {
-    return (
-      <Router>
-        <Drawer>
-
-          <Scene 
-            key="root"
-            title='Menu'
-            headerLayoutPreset='center'>
+import Login from './screens/telaLogin';
+import Cadastro from './screens/cadastro';
+import CadasAlu from './screens/cadastroAlun';
+import CadasPro from './screens/cadastroProf';
+import PerfilAlu from './screens/perfilAlun';
+import PerfilPro from './screens/perfilProf';
+import EditarAlu from './screens/editarAluno';
+import EditarPro from './screens/editarProf';
+import Reserva from './screens/reserva';
 
 
+const Routes = createAppContainer(
+  createSwitchNavigator({
+    Login,
+    Cadastro,
+    CadasAlu,
+    CadasPro,
+    PerfilAlu,
+    PerfilPro,
+    EditarAlu,
+    EditarPro,
+    Reserva
+  })
+);
+export default Routes;
 
+/* APP
+import React from 'react'
 
+import Routes from './Routers'
 
-            <Scene
-              key={'Cadastro'}
-              component={cadastro} />
-            <Scene
-              key={'PerfilProf'}
-              component={perfilProf} />
-            <Scene
-              key={'EditarProf'}
-              component={editarProf} />
-
-
-
-
-
-          </Scene>
-
-        </Drawer>
-      </Router>
-
-
-    );
-
-  }
+export default function App(){
+    return <Routes />
 }
 
-
-
-
-import React, { Component } from 'react';
-
-
-import Routers from './Routers'
-
-
-
-
-
-
-export default class App extends Component {
-
-  render() {
-    return (
-      <Routers />
-    );
-
-  }
-}
+*/
