@@ -4,7 +4,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = '^u2+#$gi!zd(v$aa_wcdvfv_dj@f4l!(vf=uf00u2jqv$v(0=z'
 DEBUG = True
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['localhost', 'luidi.ddns.net', '192.168.0.5']
 
 DEFAULT_APPS = [
     'django.contrib.admin',
@@ -20,9 +20,13 @@ THIRD_PARTY_APPS = [
 ]
 LOCAL_APPS = [
     'apps.users',
+    'apps.base',
+    'apps.reserve',
 ]
 
 INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+
+AUTH_USER_MODEL = 'users.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -33,11 +37,13 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 ROOT_URLCONF = 'glab.urls'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -49,7 +55,9 @@ TEMPLATES = [
         },
     },
 ]
+
 WSGI_APPLICATION = 'glab.wsgi.application'
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -59,7 +67,16 @@ DATABASES = {
         'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': 'glab',
+    #     'USER': 'django',
+    #     'PASSWORD': 'nave-server-django',
+    #     'HOST': 'localhost',
+    #     'PORT': '',
+    # }
 }
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -74,12 +91,15 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
 LANGUAGE_CODE = 'pt-br'
 TIME_ZONE = 'America/Rio_Branco'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
@@ -94,3 +114,4 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 50,
     'COERCE_DECIMAL_TO_STRING': False,
 }
+
