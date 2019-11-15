@@ -48,7 +48,7 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin):
     id = models.UUIDField('ID', default=uuid.uuid4(), primary_key=True)
     email = models.EmailField(
-        _('email address'),
+        _('Email'),
         unique=True,
         error_messages={
             'unique': _("A user with that email already exists."),
@@ -57,30 +57,30 @@ class User(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(_('first name'), max_length=30)
     last_name = models.CharField(_('last name'), max_length=150)
     is_staff = models.BooleanField(
-        _('staff status'),
+        _('Status Equipe'),
         default=False,
         help_text=_('Designates whether the user can log into this admin site.'),
     )
     is_active = models.BooleanField(
-        _('active'),
+        _('Ativo'),
         default=True,
         help_text=_(
             'Designates whether this user should be treated as active. '
             'Unselect this instead of deleting accounts.'
         ),
     )
-    date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
-    type_user = models.CharField(_('User Type'), max_length=1, choices=TYPE_USERS)
-    email_confirm = models.BooleanField(_('Email Confirmed Status'), default=False)
-    share_email = models.BooleanField(_('Share Email Status'), default=False)
-    share_phone = models.BooleanField(_('Share Phone Status'), default=False)
-    phone_number = models.CharField(_('Phone Number'), max_length=20, null=True, blank=True)
+    date_joined = models.DateTimeField(_('Criação da Conta'), default=timezone.now)
+    type_user = models.CharField(_('Tipo de Usuário'), max_length=1, choices=TYPE_USERS)
+    email_confirm = models.BooleanField(_('Email Confirmado Status'), default=False)
+    share_email = models.BooleanField(_('Compartilhar Email Status'), default=False)
+    share_phone = models.BooleanField(_('Compartilhar Telefone Status'), default=False)
+    phone_number = models.CharField(_('Número de Telefone'), max_length=20, null=True, blank=True)
     profile_picture = models.ImageField(
-        _('Profile Photo'),
+        _('Foto de Perfil'),
         upload_to=UploadToFactory('users/user/profile-picture'),
         null=True
     )
-    description = models.CharField(_('Bio'), max_length=255, null=True, blank=True)
+    description = models.CharField(_('Descrição'), max_length=255, null=True, blank=True)
 
     objects = UserManager()
 
@@ -88,8 +88,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = ['first_name', 'last_name']
 
     class Meta:
-        verbose_name = _('user')
-        verbose_name_plural = _('users')
+        verbose_name = _('Usuário')
+        verbose_name_plural = _('Usuários')
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
