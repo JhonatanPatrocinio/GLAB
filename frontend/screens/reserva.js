@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text, Picker, StyleSheet, ImageBackground, Image, Dimensions, TouchableOpacity, Alert, Button } from 'react-native';
+import { View,KeyboardAvoidingView,Platform, Text, Picker, StyleSheet, ImageBackground, Image, Dimensions, TouchableOpacity, TextInput} from 'react-native';
 
 
 import bgImage from '../src/img/background.jpg'
 import logo from '../src/img/Glab.png'
 import Icon from 'react-native-vector-icons/Ionicons'
 
-
+import moment from 'moment'
 
 import { ScrollView } from 'react-native-gesture-handler';
 import DateTimePicker from "react-native-modal-datetime-picker";
@@ -26,13 +26,14 @@ export default function Reserva({ navigation }) {
   return (
 
     <ImageBackground source={bgImage} style={styles.backgroundContainer}>
+      <KeyboardAvoidingView enabled={Platform.OS == 'ios'} behavior='padding'>
       <ScrollView style={{ flex: 1 }}>
         <View style={styles.backgroundContainer}>
 
           <View><Text style={styles.logoText}>Reservas</Text></View>
 
           <View style={styles.inputContainer}>
-            <Text style={styles.titulos}>Selecione a data da reserva</Text>
+            <Text style={styles.titulos}>Selecione dados da reserva</Text>
           </View>
 
           <View style={styles.logoContainer}>
@@ -42,6 +43,18 @@ export default function Reserva({ navigation }) {
           <Selecionador />
 
           <SelecionaData />
+          <SelecionaHoraI />
+          <SelecionaHoraF />
+
+          <TextInput
+              style={styles.input}
+              placeholder={'Observacoes'}
+              placeholderTextColor={'rgba(255, 255, 255, 0.7)'}
+              underlineColorAndroid='transparent'
+              autoCorrect={true}
+         
+             
+            />
 
           <TouchableOpacity onPress={tela2} style={styles.btnLogin} >
             <Text style={styles.text}>Voltar</Text>
@@ -57,6 +70,7 @@ export default function Reserva({ navigation }) {
 
         </View>
       </ScrollView>
+      </KeyboardAvoidingView>
     </ImageBackground>
 
   );
@@ -104,7 +118,7 @@ const styles = StyleSheet.create({
   },
   input: {
     width: WIDTH - 55,
-    height: 45,
+    height: 150,
     borderRadius: 25,
     fontSize: 16,
     paddingLeft: 20,
@@ -248,47 +262,171 @@ class Selecionador extends Component {
 }
 
 
+
 class SelecionaData extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isDateTimePickerVisible: false
+      isDateTimePickerVisible: false,
+      chosenDate: ''
     };
   }
 
   showDateTimePicker = () => {
     this.setState({ isDateTimePickerVisible: true });
-  };
+  }
 
   hideDateTimePicker = () => {
     this.setState({ isDateTimePickerVisible: false });
-  };
+  }
 
-  handleDatePicked = date => {
-    console.log("A date has been picked: ", date);
-    this.hideDateTimePicker();
-  };
+  handleDatePicked = (date) => {
+    this.setState({
+      isDateTimePickerVisible: false,
+    
+    chosenDate: moment(date).format('DD MMMM YYYY')
+   // this.hideDateTimePicker();
+  })
+  console.log("A date has been picked: ",moment(date).format('DD MMMM YYYY'))
+  }
 
   render() {
     return (
       <>
 
         <TouchableOpacity style={styles.button} onPress={this.showDateTimePicker}>
-          <Text style={styles.textData} >Selecionar Data e Horario</Text>
+          <Text style={styles.textData} >SELECIONAR DATA DA RESERVA</Text>
         </TouchableOpacity>
 
         <DateTimePicker
           isVisible={this.state.isDateTimePickerVisible}
           onConfirm={this.handleDatePicked}
           onCancel={this.hideDateTimePicker}
-          mode={'datetime'}
-          titleIOS={'Selecione data e horario'}
+          mode={'date'}
+          titleIOS={'Selecione a data'}
+          locale="pt_BR"
+
+
+        />
+        <Text style={styles.textData}>
+          {this.state.chosenDate}
+        </Text>
+
+      </>
+
+
+    );
+  }
+}
+
+
+class SelecionaHoraF extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isDateTimePickerVisible: false,
+      chosenTimeI: ''
+    };
+  }
+
+  showDateTimePicker = () => {
+    this.setState({ isDateTimePickerVisible: true });
+  }
+
+  hideDateTimePicker = () => {
+    this.setState({ isDateTimePickerVisible: false });
+  }
+
+  handleDatePicked = (timeI) => {
+    this.setState({
+      isDateTimePickerVisible: false,
+    
+    chosenTimeI: moment(timeI).format('HH:mm')
+   // this.hideDateTimePicker();
+  })
+  console.log("A date has been picked: ",moment(timeI).format('HH:mm'))
+  }
+
+  render() {
+    return (
+      <>
+
+        <TouchableOpacity style={styles.button} onPress={this.showDateTimePicker}>
+          <Text style={styles.textData} >SELECIONAR HORARIO FINAL </Text>
+        </TouchableOpacity>
+
+        <DateTimePicker
+          isVisible={this.state.isDateTimePickerVisible}
+          onConfirm={this.handleDatePicked}
+          onCancel={this.hideDateTimePicker}
+          mode={'time'}
+          titleIOS={'Selecione horario final'}
+          is24Hour={true}
+          locale="pt_BR"
+          
+
+
+        />
+        <Text style={styles.textData}>
+          {this.state.chosenTimeI}
+        </Text>
+
+      </>
+
+
+    );
+  }
+}
+
+class SelecionaHoraI extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isDateTimePickerVisible: false,
+      chosenTimeF: ''
+    };
+  }
+
+  showDateTimePicker = () => {
+    this.setState({ isDateTimePickerVisible: true });
+  }
+
+  hideDateTimePicker = () => {
+    this.setState({ isDateTimePickerVisible: false });
+  }
+
+  handleDatePicked = (timeF) => {
+    this.setState({
+      isDateTimePickerVisible: false,
+    
+    chosenTimeF: moment(timeF).format('HH:mm')
+   // this.hideDateTimePicker();
+  })
+  console.log("A date has been picked: ",moment(timeF).format('HH:mm'))
+  }
+
+  render() {
+    return (
+      <>
+
+        <TouchableOpacity style={styles.button} onPress={this.showDateTimePicker}>
+          <Text style={styles.textData} >SELECIONAR HORARIO INICIAL</Text>
+        </TouchableOpacity>
+
+        <DateTimePicker
+          isVisible={this.state.isDateTimePickerVisible}
+          onConfirm={this.handleDatePicked}
+          onCancel={this.hideDateTimePicker}
+          mode={'time'}
+          titleIOS={'Selecione horario inicial'}
           is24Hour={true}
           locale="pt_BR"
 
 
         />
-
+        <Text style={styles.textData}>
+          {this.state.chosenTimeF}
+        </Text>
 
       </>
 

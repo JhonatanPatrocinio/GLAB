@@ -38,7 +38,7 @@ export default function EditarProf({ navigation }) {
               />
             </View>
 
-            <Selecionador />
+        
 
             <View style={styles.inputContainer}>
               <Text style={styles.titulos}>Nome</Text>
@@ -51,7 +51,7 @@ export default function EditarProf({ navigation }) {
             </View>
 
             <View style={styles.inputContainer}>
-              <Text style={styles.titulos}>Login</Text>
+              <Text style={styles.titulos}>Email</Text>
               <TextInput
                 style={styles.input}
                 //placeholder={''}
