@@ -61,22 +61,22 @@ TEMPLATES = [
 WSGI_APPLICATION = 'glab.wsgi.application'
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'glab',
-    #     'USER': 'admin',
-    #     'PASSWORD': '1995',
-    #     'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
-    #     'PORT': '3306',
-    # }
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'glab',
-        'USER': 'django',
-        'PASSWORD': 'nave-server-django',
-        'HOST': 'localhost',
-        'PORT': '',
+        'USER': 'admin',
+        'PASSWORD': '1995',
+        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
     }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': 'glab',
+    #     'USER': 'django',
+    #     'PASSWORD': '',
+    #     'HOST': 'localhost', nave-server-django
+    #     'PORT': '',
+    # }
 }
 
 AUTH_PASSWORD_VALIDATORS = [

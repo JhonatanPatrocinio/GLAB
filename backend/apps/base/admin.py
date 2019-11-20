@@ -11,3 +11,8 @@ class LaboratoryAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Laboratory, LaboratoryAdmin)
+
+
+admin.site.site_header = 'GLAB :: Painel Administrativo'
+admin.site.index_title = 'GLAB - UFAC'
+admin.site.site_title = 'GLAB'
