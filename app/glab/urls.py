@@ -3,7 +3,6 @@ from django.urls import path, include
 from rest_framework import routers
 
 from base.viewsets import LaboratoryViewSet
-from reserve.viewsets import ReserveViewSet
 from users.viewsets import UserViewSet
 
 # from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
@@ -11,7 +10,6 @@ from users.viewsets import UserViewSet
 
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet, basename='UserApp')
-router.register(r'reservations', ReserveViewSet, basename='ReverseApp')
 router.register(r'laboratories', LaboratoryViewSet, basename='LaboratoryApp')
 
 

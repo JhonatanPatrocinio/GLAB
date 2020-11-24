@@ -116,3 +116,6 @@ app/.dockerignore
 /migrations/
 
 postgres_data/
+/postgres_data/
+/app/base/migrations/
+/app/users/migrations/

@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2020-10-04" view-index="0" gantt-divider-location="471" resource-divider-location="338" version="2.8.11" locale="pt_BR">
+    <description/>
+    <view zooming-state="default:7" id="gantt-chart">
+        <field id="tpd3" name="Nome" width="278" order="0"/>
+        <field id="tpd4" name="Data inicial" width="106" order="1"/>
+        <field id="tpd5" name="Data final" width="83" order="2"/>
+        <timeline>
+            <![CDATA[11]]>
+        </timeline>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Nome" width="229" order="0"/>
+        <field id="1" name="Função" width="105" order="1"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1"/>
+            <only-show-weekends value="false"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+        <date year="2019" month="9" date="7" type="HOLIDAY">
+            <![CDATA[Feriado em 07/09/2019 00:00]]>
+        </date>
+        <date year="2019" month="10" date="12" type="HOLIDAY">
+            <![CDATA[Feriado em 12/10/2019 00:00]]>
+        </date>
+        <date year="2019" month="11" date="2" type="HOLIDAY">
+            <![CDATA[Feriado em 02/11/2019 00:00]]>
+        </date>
+        <date year="2019" month="11" date="15" type="HOLIDAY">
+            <![CDATA[Feriado em 15/11/2019 00:00]]>
+        </date>
+        <date year="2019" month="12" date="25" type="HOLIDAY">
+            <![CDATA[Feriado em 25/12/2019 00:00]]>
+        </date>
+        <date year="2020" month="1" date="1" type="HOLIDAY">
+            <![CDATA[Feriado em 01/01/2020 00:00]]>
+        </date>
+        <date year="2020" month="1" date="26" type="HOLIDAY">
+            <![CDATA[Feriado em 26/01/2020 00:00]]>
+        </date>
+        <date year="2020" month="4" date="10" type="HOLIDAY">
+            <![CDATA[Feriado em 10/04/2020 00:00]]>
+        </date>
+        <date year="2020" month="4" date="21" type="HOLIDAY">
+            <![CDATA[Feriado em 21/04/2020 00:00]]>
+        </date>
+        <date year="2020" month="5" date="1" type="HOLIDAY">
+            <![CDATA[Feriado em 01/05/2020 00:00]]>
+        </date>
+        <date year="2020" month="6" date="11" type="HOLIDAY">
+            <![CDATA[Feriado em 11/06/2020 00:00]]>
+        </date>
+        <date year="2020" month="9" date="7" type="HOLIDAY">
+            <![CDATA[Feriado em 07/09/2020 00:00]]>
+        </date>
+        <date year="2020" month="10" date="12" type="HOLIDAY">
+            <![CDATA[Feriado em 12/10/2020 00:00]]>
+        </date>
+        <date year="2020" month="11" date="2" type="HOLIDAY">
+            <![CDATA[Feriado em 02/11/2020 00:00]]>
+        </date>
+        <date year="2020" month="11" date="15" type="HOLIDAY">
+            <![CDATA[Feriado em 15/11/2020 00:00]]>
+        </date>
+        <date year="2020" month="12" date="25" type="HOLIDAY">
+            <![CDATA[Feriado em 25/12/2020 00:00]]>
+        </date>
+        <date year="2021" month="1" date="1" type="HOLIDAY">
+            <![CDATA[Feriado em 01/01/2021 00:00]]>
+        </date>
+        <date year="2019" month="12" date="28" type="HOLIDAY">
+            <![CDATA[Feriado em 28/12/2019 00:00]]>
+        </date>
+        <date year="2019" month="11" date="17" type="HOLIDAY">
+            <![CDATA[Feriado em 17/11/2019 00:00]]>
+        </date>
+        <date year="2020" month="1" date="20" type="HOLIDAY">
+            <![CDATA[Feriado em 20/01/2020 00:00]]>
+        </date>
+        <date year="2020" month="1" date="23" type="HOLIDAY">
+            <![CDATA[Feriado em 23/01/2020 00:00]]>
+        </date>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="13" name="Projeto GLAB" meeting="false" start="2019-08-05" duration="378" complete="0" expand="true">
+            <task id="0" name="2 Semestre 2019" color="#8cb6ce" meeting="false" start="2019-08-05" duration="96" complete="0" thirdDate="2019-06-03" thirdDate-constraint="0" priority="0" expand="true">
+                <notes>
+                    <![CDATA[Periodo de aulas do 2 semestre UFAC ]]>
+                </notes>
+                <task id="45" name="Aulas Eng" color="#8cb6ce" meeting="false" start="2019-08-05" duration="96" complete="0" thirdDate="2019-08-12" thirdDate-constraint="0" expand="true">
+                    <notes>
+                        <![CDATA[Periodo de aulas de Engenharia de Software I]]>
+                    </notes>
+                </task>
+                <task id="6" name="Documentação" color="#8cb6ce" meeting="false" start="2019-09-19" duration="7" complete="0" thirdDate="2019-05-01" thirdDate-constraint="0" expand="true">
+                    <notes>
+                        <![CDATA[Criação de documentação e leventamento de requisitos ]]>
+                    </notes>
+                    <depend id="39" type="2" difference="0" hardness="Strong"/>
+                    <depend id="46" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="38" name="Back-end" color="#000000" meeting="false" start="2019-09-30" duration="14" complete="0" thirdDate="2019-09-30" thirdDate-constraint="0" expand="false">
+                    <task id="39" name="Cadastrar Reservas" color="#8cb6ce" meeting="false" start="2019-09-30" duration="7" complete="0" thirdDate="2019-08-12" thirdDate-constraint="0" expand="true">
+                        <depend id="40" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                    <task id="40" name="Cadastrar Laboratórios" color="#8cb6ce" meeting="false" start="2019-10-09" duration="7" complete="0" thirdDate="2019-08-12" thirdDate-constraint="0" expand="true"/>
+                </task>
+                <task id="46" name="Front-end" color="#000000" meeting="false" start="2019-09-30" duration="13" complete="0" thirdDate="2019-09-30" thirdDate-constraint="0" expand="false">
+                    <task id="73" name="Criação da área do Administrador" color="#8cb6ce" meeting="false" start="2019-09-30" duration="3" complete="0" thirdDate="2019-09-30" thirdDate-constraint="0" expand="true">
+                        <depend id="75" type="2" difference="0" hardness="Strong"/>
+                        <depend id="82" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                    <task id="75" name="Criação da área de Laboratórios" color="#8cb6ce" meeting="false" start="2019-10-03" duration="1" complete="0" thirdDate="2019-10-03" thirdDate-constraint="0" expand="true"/>
+                    <task id="82" name="Criaçao da área de Centros" color="#8cb6ce" meeting="false" start="2019-10-03" duration="2" complete="0" thirdDate="2019-09-30" thirdDate-constraint="0" expand="true"/>
+                    <task id="55" name="Criação da tela inicial" color="#8cb6ce" meeting="false" start="2019-10-07" duration="2" complete="0" thirdDate="2019-08-05" thirdDate-constraint="0" expand="true">
+                        <notes>
+                            <![CDATA[Criação da tela de login onde deve ser feito o login para a aplicação]]>
+                        </notes>
+                        <depend id="61" type="2" difference="0" hardness="Strong"/>
+                        <depend id="62" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                    <task id="61" name="Criação da área do Docente" color="#8cb6ce" meeting="false" start="2019-10-09" duration="3" complete="0" thirdDate="2019-07-01" thirdDate-constraint="0" expand="true">
+                        <depend id="69" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                    <task id="62" name="Criação da área do Discente" color="#8cb6ce" meeting="false" start="2019-10-09" duration="2" complete="0" thirdDate="2019-09-30" thirdDate-constraint="0" expand="true"/>
+                    <task id="69" name="Criação da área de reserva" color="#8cb6ce" meeting="false" start="2019-10-14" duration="3" complete="0" thirdDate="2019-09-30" thirdDate-constraint="0" expand="true"/>
+                </task>
+            </task>
+            <task id="5" name="ERE Semestre 2020" color="#8cb6ce" meeting="false" start="2020-10-26" duration="69" complete="0" thirdDate="2020-02-03" thirdDate-constraint="0" expand="true">
+                <notes>
+                    <![CDATA[Perido do ERE semestre de 2020]]>
+                </notes>
+                <task id="10" name="Aulas Eng" color="#8cb6ce" meeting="false" start="2020-10-26" duration="66" complete="0" thirdDate="2019-05-01" thirdDate-constraint="0" expand="true">
+                    <notes>
+                        <![CDATA[Aulas do semestre ERE 
+]]>
+                    </notes>
+                </task>
+                <task id="100" name="Correção da Documentação" color="#8cb6ce" meeting="false" start="2020-11-17" duration="2" complete="0" thirdDate="2020-10-13" thirdDate-constraint="0" expand="true">
+                    <depend id="11" type="2" difference="0" hardness="Strong"/>
+                    <depend id="89" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="11" name="Back-end" color="#8cb6ce" meeting="false" start="2020-11-19" duration="20" complete="0" thirdDate="2019-05-01" thirdDate-constraint="0" expand="false">
+                    <depend id="33" type="2" difference="0" hardness="Strong"/>
+                    <task id="20" name="Cadastrar Professores" color="#8cb6ce" meeting="false" start="2020-11-19" duration="5" complete="0" thirdDate="2020-09-21" thirdDate-constraint="0" expand="true">
+                        <depend id="21" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                    <task id="21" name="Cadastrar Coordenações" color="#8cb6ce" meeting="false" start="2020-11-26" duration="5" complete="0" thirdDate="2020-09-21" thirdDate-constraint="0" expand="true">
+                        <depend id="22" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                    <task id="22" name="Cadastrar Setores" color="#8cb6ce" meeting="false" start="2020-12-03" duration="5" complete="0" thirdDate="2020-09-21" thirdDate-constraint="0" expand="true">
+                        <depend id="23" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                    <task id="23" name="Cadastrar Espaços" color="#8cb6ce" meeting="false" start="2020-12-10" duration="5" complete="0" thirdDate="2020-09-21" thirdDate-constraint="0" expand="true"/>
+                </task>
+                <task id="89" name="Front-end" color="#8cb6ce" meeting="false" start="2020-11-19" duration="18" complete="0" thirdDate="2019-09-02" thirdDate-constraint="0" expand="false">
+                    <depend id="33" type="2" difference="0" hardness="Strong"/>
+                    <task id="91" name="Teste de Bugs" color="#8cb6ce" meeting="false" start="2020-11-19" duration="5" complete="0" thirdDate="2020-06-15" thirdDate-constraint="0" expand="true">
+                        <notes>
+                            <![CDATA[Verificação das telas para encontrar bugs]]>
+                        </notes>
+                        <depend id="97" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                    <task id="97" name="Correção de bugs" color="#8cb6ce" meeting="false" start="2020-11-26" duration="5" complete="0" thirdDate="2020-09-28" thirdDate-constraint="0" expand="true">
+                        <depend id="114" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                    <task id="114" name="Criação da área de Coordenações" color="#8cb6ce" meeting="false" start="2020-12-03" duration="3" complete="0" thirdDate="2020-09-28" thirdDate-constraint="0" expand="true">
+                        <depend id="115" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                    <task id="115" name="Ajustes finais" color="#8cb6ce" meeting="false" start="2020-12-08" duration="5" complete="0" thirdDate="2020-10-05" thirdDate-constraint="0" expand="true">
+                        <notes>
+                            <![CDATA[Verificar layouts, fontes, botões e imagens ]]>
+                        </notes>
+                    </task>
+                </task>
+                <task id="33" name="Integração" color="#8cb6ce" meeting="false" start="2020-12-17" duration="32" complete="0" thirdDate="2020-09-21" thirdDate-constraint="0" expand="true"/>
+            </task>
+        </task>
+    </tasks>
+    <resources>
+        <resource id="0" name="Jhonatan Santos do Patrocinio" function="Default:1" contacts="" phone=""/>
+        <resource id="1" name="Tiago Gomes Braga Garcia Prata" function="Default:1" contacts="" phone=""/>
+    </resources>
+    <allocations>
+        <allocation task-id="11" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="20" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="21" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="22" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="23" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="33" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="39" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="40" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="100" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="38" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="6" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="33" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="89" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="46" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="100" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="6" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="91" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="97" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="114" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="115" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="73" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="75" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="82" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="55" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="61" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="62" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="69" resource-id="1" function="Default:1" responsible="true" load="100.0"/>
+    </allocations>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+</project>

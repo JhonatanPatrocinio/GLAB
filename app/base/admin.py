@@ -10,7 +10,7 @@ class LaboratoryAdmin(admin.ModelAdmin):
         fields = '__all__'
 
 
-class ReserveAdmin(admin.ModelAdmin):
+class ReservationAdmin(admin.ModelAdmin):
     list_display = ('user', 'laboratory', 'date', 'initial_time', 'end_time', 'status')
     search_fields = ('user', 'laboratory', 'date')
     list_filter = ('laboratory', 'status')
@@ -19,7 +19,7 @@ class ReserveAdmin(admin.ModelAdmin):
         fields = '__all__'
 
 
-admin.site.register(Reserve, ReserveAdmin)
+admin.site.register(Reservation, ReservationAdmin)
 admin.site.register(Laboratory, LaboratoryAdmin)
 
 
