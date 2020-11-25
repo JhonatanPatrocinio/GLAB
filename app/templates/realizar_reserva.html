@@ -41,21 +41,19 @@
     <!-- End: Navigation Clean -->
     <div class="container" style="margin-bottom: 64px;">
         <div class="row">
-            <div class="col text-center" style="margin-top: 64px;">
-                <h1>Editar dados</h1>
+            <div class="col text-center" style="margin-top: 64px;margin-bottom: 64px;">
+                <h1>Realizar Reserva</h1>
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-auto">
                 <form>
-                    <div class="form-group"><label for="input_edit_teacher_matri">Matricula:<input class="form-control" type="number" id="input_edit_teacher_matri"></label></div>
-                    <div class="form-group"><label for="select_edit_teacher_center">Centro:<select class="form-control" id="select_edit_teacher_center"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></label></div>
+                    <div class="form-group"><label for="input_reservetion_place">Matricula:<select class="form-control" id="input_reservetion_place"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></label></div>
                     <div
-                        class="form-group"><label for="input_edit_teacher_name">Nome:<input class="form-control" type="text" id="input_edit_teacher_name" name=""></label></div>
-            <div class="form-group"><label for="input_edit_teacher_email">Email:<input class="form-control" type="email" id="input_edit_teacher_email"></label></div>
-            <div class="form-group"><label for="input_edit_teacher_login">Login:<input class="form-control" type="text" id="input_edit_teacher_login" name=""></label></div>
-            <div class="form-group"><label for="input_edit_teacher_password">Senha:<input class="form-control" type="password" id="input_edit_teacher_password"></label></div>
-            <div class="form-group"><label for="input_edit_teacher_password_confimation">Confirmar senha:<input class="form-control" type="password" id="input_edit_teacher_password_confimation"></label></div><button class="btn btn-primary" type="button"><i class="fa fa-save" style="margin-right: 10px;"></i>Salvar</button></form>
+                        class="form-group"><label for="date_input_reservetion_date">Data:<input class="form-control" id="date_input_reservetion_date" type="date"></label></div>
+            <div class="form-group"><label for="date_input_reservetion_start_time">Horário início:<input class="form-control" id="date_input_reservetion_start_time" type="time"></label></div>
+            <div class="form-group"><label for="date_input_reservetion_end_time">Horário termino:<input class="form-control" id="date_input_reservetion_end_time" type="time"></label></div>
+            <div class="form-group"><label for="input_reservetion_observations">Observações:<input class="form-control" type="text" id="input_reservetion_observations"></label></div><button class="btn btn-primary" id="button_reservation_solicitation" type="button"><i class="fas fa-location-arrow" style="margin-right: 10px;"></i>Solicitar</button></form>
         </div>
     </div>
     </div>
