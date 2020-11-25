@@ -46,18 +46,87 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-auto">
-                <form>
-                    <div class="form-group"><label for="input_edit_teacher_matri">Matricula:<input class="form-control" type="number" id="input_edit_teacher_matri"></label></div>
-                    <div class="form-group"><label for="select_edit_teacher_center">Centro:<select class="form-control" id="select_edit_teacher_center"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></label></div>
-                    <div
-                        class="form-group"><label for="input_edit_teacher_name">Nome:<input class="form-control" type="text" id="input_edit_teacher_name" name=""></label></div>
-            <div class="form-group"><label for="input_edit_teacher_email">Email:<input class="form-control" type="email" id="input_edit_teacher_email"></label></div>
-            <div class="form-group"><label for="input_edit_teacher_login">Login:<input class="form-control" type="text" id="input_edit_teacher_login" name=""></label></div>
-            <div class="form-group"><label for="input_edit_teacher_password">Senha:<input class="form-control" type="password" id="input_edit_teacher_password"></label></div>
-            <div class="form-group"><label for="input_edit_teacher_password_confimation">Confirmar senha:<input class="form-control" type="password" id="input_edit_teacher_password_confimation"></label></div><button class="btn btn-primary" type="button"><i class="fa fa-save" style="margin-right: 10px;"></i>Salvar</button></form>
+            <div class="col" style="margin-top: 32px;"><form class="needs-validation" novalidate>
+    <fieldset disabled>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="input_edit_teacher_matri">Matricula:</label>
+                <input type="text" class="form-control" id="input_edit_teacher_matri">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="select_edit_teacher_ccenter">Centro:</label>
+                <select id="select_edit_teacher_center" class="form-control">
+                    <option valeu="1">Choose...</option>
+                    <option value="2">This is item 2</option>
+                    <option value="3">This is item 3</option>
+                </select>
+            </div>
         </div>
+    </fieldset>
+    
+    <div class="form-group">
+        <label for="input_edit_teacher_name">Nome:</label>
+        <input type="text" class="form-control" id="input_edit_teacher_name" required>
+            <div class="invalid-feedback">
+            Por favor, forneça seu nome.
+            </div>
     </div>
+    
+    <fieldset disabled>
+        <div class="form-row">
+             <div class="form-group col-md-6">
+                <label for="input_edit_teacher_login">Login:</label>
+                <input type="text" class="form-control" id="input_edit_teacher_login">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="input_edit_teacher_email">Email:</label>
+                <input type="email" class="form-control" id="input_edit_teacher_email">
+            </div>
+        </div>
+    </fieldset>
+    
+    <div class="form-row">
+         <div class="form-group col-md-6">
+            <label for="input_edit_teacher_password">Senha:</label>
+            <input type="password" class="form-control" id="input_edit_teacher_password" required>
+            <div class="invalid-feedback">
+            Por favor, forneça sua senha.
+            </div>
+        </div>
+         <div class="form-group col-md-6">
+            <label for="input_edit_teacher_password_confirmation">Confirmar senha:</label>
+            <input type="password" class="form-control" id="input_edit_teacher_password_confirmation" required>
+            <div class="invalid-feedback">
+            Por favor, forneça sua confirmação de senha.
+            </div>
+        </div>
+    </div> 
+    
+    <button type="submit" id="button_edit_teacher_submit" class="btn btn-primary"><i class="fa fa-save" style="margin-right: 10px;"></i>Cadastrar</button>
+    
+</form>
+
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script></div>
+        </div>
     </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>

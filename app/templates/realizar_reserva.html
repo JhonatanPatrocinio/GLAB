@@ -44,19 +44,89 @@
             <div class="col text-center" style="margin-top: 64px;margin-bottom: 64px;">
                 <h1>Realizar Reserva</h1>
             </div>
+        </div><form class="needs-validation" novalidate>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="select_reservetion_place">Local</label>
+            <select id="select_reservetion_place" class="form-control" required>
+                <option selected disabled value="">Local</option>
+                <option value="1">This is item 1</option>
+                <option value="2">This is item 2</option>
+            </select>
+            <div class="invalid-feedback">
+            Por favor, selecione o local desejado.
+            </div>
         </div>
-        <div class="row justify-content-center">
-            <div class="col-auto">
-                <form>
-                    <div class="form-group"><label for="input_reservetion_place">Matricula:<select class="form-control" id="input_reservetion_place"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></label></div>
-                    <div
-                        class="form-group"><label for="date_input_reservetion_date">Data:<input class="form-control" id="date_input_reservetion_date" type="date"></label></div>
-            <div class="form-group"><label for="date_input_reservetion_start_time">Horário início:<input class="form-control" id="date_input_reservetion_start_time" type="time"></label></div>
-            <div class="form-group"><label for="date_input_reservetion_end_time">Horário termino:<input class="form-control" id="date_input_reservetion_end_time" type="time"></label></div>
-            <div class="form-group"><label for="input_reservetion_observations">Observações:<input class="form-control" type="text" id="input_reservetion_observations"></label></div><button class="btn btn-primary" id="button_reservation_solicitation" type="button"><i class="fas fa-location-arrow" style="margin-right: 10px;"></i>Solicitar</button></form>
+        <div class="form-group col-md-2">
+            <label for="date_input_reservetion_date">Data:</label>
+            <input class="form-control" id="date_input_reservetion_date" type="date" required />
+            <div class="invalid-feedback">
+            Por favor, forneça a data da reserva.
+            </div>
+        </div> 
+    </div>
+    
+    
+    <div class="form-row">
+         <div class="form-group col-md-2">
+            <label for="date_input_reservetion_start_time">Horário início:</label>
+            <input type="time" class="form-control" id="date_input_reservetion_start_time" required/>
+            <div class="invalid-feedback">
+            Por favor, forneça o horário de início da reserva.
+            </div>
+        </div>
+        <div class="form-group col-md-2">
+            <label for="date_input_reservetion_end_time">Horário termino:</label>
+            <input type="time" class="form-control" id="date_input_reservetion_end_time" required/>
+            <div class="invalid-feedback">
+            Por favor, forneça o horário de termino da reserva.
+            </div>
         </div>
     </div>
+
+     <div class="form-group">
+      <label for="input_reservetion_motivation">Motivo da reserva:</label>
+      <input type="text" class="form-control" id="input_reservetion_motivation" required/>
+        <div class="invalid-feedback">
+        Por favor, forneça o motivo da reserva.
+        </div>
+    </div>   
+
+    <div class="form-group">
+      <label for="input_reservetion_observations">Observações:</label>
+      <input type="text-area" class="form-control" id="input_reservetion_observations">
     </div>
+    
+
+  
+    
+  
+  <button type="submit" id="button_reservation_solicitation" class="btn btn-primary">
+      <i class="fas fa-location-arrow" style="margin-right: 10px;"></i>Solicitar
+    </button>
+    
+</form>
+
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script></div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
