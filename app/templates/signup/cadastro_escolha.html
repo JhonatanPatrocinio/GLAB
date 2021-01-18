@@ -1,0 +1,45 @@
+{% extends 'components/base.html' %}
+{% load static %}
+
+{% block body %}
+    <div class="text-center" style="margin-top: 64px;height: 98px;">
+        <div style="background: url({% static 'assets/img/Logo-ufac-glab.png' %}) center / contain no-repeat;height: 98px;margin-right: -22px;margin-left: 10px;"></div>
+    </div>
+    <h1 style="text-align: center;margin-top: 64px;margin-bottom: 32px;">Cadastro</h1><!-- Start: Buttons -->
+    <div class="text-center" style="margin-bottom: 64px;">
+        <form method="post" id="form">
+            <div class="row">
+                {% csrf_token %}
+                {{ form.choice }}
+                <div class="col-lg-6 col-md">
+                    <div class="card" onclick="setUser(0)" style="cursor: pointer">
+                        <div class="h3 card-header border-primary " style="margin: 0">
+                            <p class="text-center">Docente</p>
+                        </div>
+                        <div class="card-body d-flex justify-content-center">
+                            <img alt="Professor" src="{% static 'imagens/teacher.svg' %}" width="250" height="250">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md">
+                    <div class="card" onclick="setUser(1)" style="cursor: pointer">
+                        <div class="h3 card-header border-primary" style="margin: 0">
+                            <p class="text-center">Discente</p>
+                        </div>
+                        <div class="card-body d-flex justify-content-center">
+                            <img alt="Aluno" src="{% static 'imagens/student_cap.svg' %}" width="250" height="250">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div><!-- End: Buttons -->
+  {% endblock body %}
+{% block js %}
+    <script>
+        const setUser = (type) => {
+            document.querySelector("#id_choice").value = type;
+            document.querySelector("#form").submit()
+        }
+    </script>
+{% endblock js %}

@@ -1,0 +1,44 @@
+{% extends 'components/base.html' %}
+{% block title %}- Cadastro Discente{% endblock title %}
+{% block body %}
+    <div class="container" style="margin-bottom: 64px;">
+        <div class="row">
+            <div class="col text-center" style="margin-top: 64px;">
+                <h1>Cadastro Discente</h1>
+            </div>
+        </div>
+            {% if messages %}{% include 'components/messages.html' %}{% endif %}
+        <div class="row justify-content-center">
+            <div class="col" style="margin-top: 32px;">
+                <form class="needs-validation" novalidate method="POST">
+                    {% csrf_token %}
+                    {% include 'components/forms/form_discente.html' with form=form form_student=form_student %}
+                    <button type="submit" id="button_register_student_submit" class="btn btn-primary">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock body %}
+
+{% block js %}
+    <script>
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+{% endblock js %}

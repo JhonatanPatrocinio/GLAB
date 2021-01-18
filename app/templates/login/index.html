@@ -1,40 +1,14 @@
+{% extends 'components/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
 
+{% block body %}
 
-
-<body>
-<!-- Start: Navigation Clean -->
-<nav class="navbar navbar-light navbar-expand-md navigation-clean" style="background: rgb(203,203,203);">
-    <div class="container">
-        <a class="navbar-brand" href="#" style="background: url({% static 'assets/img/Glab.png' %}) no-repeat;width: 86px;height: 51px;background-size: cover;"></a>
-        <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navcol-1">
-            <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item">
-                    <!-- Start: button_home -->
-                    <a class="nav-link" href="#">Início<i class="icon ion-home" style="margin-left: 6px;"></i></a>
-                    <!-- End: button_home -->
-                </li>
-                <li class="nav-item">
-                    <!-- Start: button_help -->
-                    <a class="nav-link" href="#">Ajuda<i class="icon ion-help-circled" style="margin-left: 6px;"></i></a>
-                    <!-- End: button_help -->
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<!-- End: Navigation Clean -->
 <div class="text-center" style="margin-top: 64px;height: 98px;">
     <div style="background: url({% static 'assets/img/Logo-ufac-glab.png' %}) center / contain no-repeat;height: 98px;margin-right: -22px;margin-left: 10px;"></div>
 </div>
 <h1 style="text-align: center;margin-top: 64px;margin-bottom: 32px;">Entrar</h1>
 <div class="container">
+            {% if messages %}{% include 'components/messages.html' %}{% endif %}
     <div class="row justify-content-center">
         <div class="col-auto">
             <form method="post">
@@ -47,15 +21,11 @@
                 </div>
                 <div class="text-center">
                     <!-- Start: button_singup -->
-                    <button class="btn btn-primary" type="button">Cadastrar</button>
+                    <a class="btn btn-primary" role="button" href="{% url 'signup:choice_signup' %}">Cadastrar</a>
                     <!-- End: button_singup -->
                 </div>
             </form>
         </div>
     </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-</body>
-
-</html>
+{% endblock body %}

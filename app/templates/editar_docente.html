@@ -1,135 +1,56 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Glab</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
-    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
-    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
-    <link rel="stylesheet" href="assets/css/Bootstrap-Calendar.css">
-    <link rel="stylesheet" href="assets/css/Calendar-BS4-1.css">
-    <link rel="stylesheet" href="assets/css/Calendar-BS4.css">
-    <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
-    <link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
-    <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-</head>
-
-<body>
-    <!-- Start: Navigation Clean -->
-    <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="background: rgb(203,203,203);">
-        <div class="container"><a class="navbar-brand" href="#" style="background: url(&quot;assets/img/Glab.png&quot;) no-repeat;width: 86px;height: 51px;background-size: cover;"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div
-                class="collapse navbar-collapse" id="navcol-1">
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <!-- Start: button_home --><a class="nav-link" href="#">Início<i class="icon ion-home" style="margin-left: 6px;"></i></a>
-                        <!-- End: button_home -->
-                    </li>
-                    <li class="nav-item">
-                        <!-- Start: button_help --><a class="nav-link" href="#">Ajuda<i class="icon ion-help-circled" style="margin-left: 6px;"></i></a>
-                        <!-- End: button_help -->
-                    </li>
-                </ul>
-        </div>
-        </div>
-    </nav>
-    <!-- End: Navigation Clean -->
+{% extends 'components/base.html' %}
+{% block nav %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'teacher:edit_profile_teacher' %}">Editar informações<i class="ion ion-person ml-1" style="margin-left: 6px;"></i></a><!-- End: button_teacher_profile_edit_profile -->
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Reservar espaço<i class="ion ion-calendar ml-1" style="margin-left: 6px;"></i></a><!-- End: button_teacher_profile_make_reservation -->
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Verificar reserva<i class="ion ion-search ml-1" style="margin-left: 6px;"></i></a><!-- End: button_teacher_profile_see_reservation -->
+    </li>
+{% endblock nav %}
+{% block body %}
     <div class="container" style="margin-bottom: 64px;">
-        <div class="row">
-            <div class="col text-center" style="margin-top: 64px;">
-                <h1>Editar dados</h1>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col" style="margin-top: 32px;"><form class="needs-validation" novalidate>
-    <fieldset disabled>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="input_edit_teacher_matri">Matricula:</label>
-                <input type="text" class="form-control" id="input_edit_teacher_matri">
-            </div>
-            <div class="form-group col-md-6">
-                <label for="select_edit_teacher_ccenter">Centro:</label>
-                <select id="select_edit_teacher_center" class="form-control">
-                    <option valeu="1">Choose...</option>
-                    <option value="2">This is item 2</option>
-                    <option value="3">This is item 3</option>
-                </select>
-            </div>
-        </div>
-    </fieldset>
-    
-    <div class="form-group">
-        <label for="input_edit_teacher_name">Nome:</label>
-        <input type="text" class="form-control" id="input_edit_teacher_name" required>
-            <div class="invalid-feedback">
-            Por favor, forneça seu nome.
-            </div>
-    </div>
-    
-    <fieldset disabled>
-        <div class="form-row">
-             <div class="form-group col-md-6">
-                <label for="input_edit_teacher_login">Login:</label>
-                <input type="text" class="form-control" id="input_edit_teacher_login">
-            </div>
-            <div class="form-group col-md-6">
-                <label for="input_edit_teacher_email">Email:</label>
-                <input type="email" class="form-control" id="input_edit_teacher_email">
-            </div>
-        </div>
-    </fieldset>
-    
-    <div class="form-row">
-         <div class="form-group col-md-6">
-            <label for="input_edit_teacher_password">Senha:</label>
-            <input type="password" class="form-control" id="input_edit_teacher_password" required>
-            <div class="invalid-feedback">
-            Por favor, forneça sua senha.
-            </div>
-        </div>
-         <div class="form-group col-md-6">
-            <label for="input_edit_teacher_password_confirmation">Confirmar senha:</label>
-            <input type="password" class="form-control" id="input_edit_teacher_password_confirmation" required>
-            <div class="invalid-feedback">
-            Por favor, forneça sua confirmação de senha.
-            </div>
-        </div>
-    </div> 
-    
-    <button type="submit" id="button_edit_teacher_submit" class="btn btn-primary"><i class="fa fa-save" style="margin-right: 10px;"></i>Cadastrar</button>
-    
-</form>
-
-<script>
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(function() {
-  'use strict';
-  window.addEventListener('load', function() {
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.getElementsByClassName('needs-validation');
-    // Loop over them and prevent submission
-    var validation = Array.prototype.filter.call(forms, function(form) {
-      form.addEventListener('submit', function(event) {
-        if (form.checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-        form.classList.add('was-validated');
-      }, false);
-    });
-  }, false);
-})();
-</script></div>
+    <div class="row">
+        <div class="col text-center" style="margin-top: 64px;">
+            <h1>Editar dados</h1>
         </div>
     </div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-</body>
+    {% if messages %}{% include 'components/messages.html' %}{% endif %}
+    <div class="row justify-content-center">
+        <div class="col" style="margin-top: 32px;">
+            <form class="needs-validation" novalidate method="POST">
+                {% csrf_token %}
+                {% include 'components/forms/form_docente.html' with form=form form_teacher=form_teacher %}
+                <div class="text-center">
+                    <a type="button" id="button_update_teacher_submit" href="{% url 'teacher:dashboard_teacher' %}" class="btn btn-secondary">Voltar</a>
+                    <button type="submit" id="button_update_teacher_submit" class="btn btn-primary">Atualizar Cadastro</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock body %}
 
-</html>
+{% block js %}
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+{% endblock js %}

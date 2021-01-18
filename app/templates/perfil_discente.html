@@ -1,210 +1,61 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Glab</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
-    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
-    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
-    <link rel="stylesheet" href="assets/css/Bootstrap-Calendar.css">
-    <link rel="stylesheet" href="assets/css/Calendar-BS4-1.css">
-    <link rel="stylesheet" href="assets/css/Calendar-BS4.css">
-    <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
-    <link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
-    <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-</head>
-
-<body>
-    <!-- Start: Navigation Clean -->
-    <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="background: rgb(203,203,203);">
-        <div class="container"><a class="navbar-brand" href="#" style="background: url(&quot;assets/img/Glab.png&quot;) no-repeat;width: 86px;height: 51px;background-size: cover;"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div
-                class="collapse navbar-collapse" id="navcol-1">
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <!-- Start: button_student_profile_edit_profile --><a class="nav-link" id="button_student_profile_edit_profile" href="#">Editar informações<i class="fas fa-user-edit" style="margin-left: 6px;"></i></a>
-                        <!-- End: button_student_profile_edit_profile -->
-                    </li>
-                    <li class="nav-item"></li>
-                    <li class="nav-item">
-                        <!-- Start: button_student_profile_see_reservation --><a class="nav-link" id="button_student_profile_see_schedules" href="#">Verificar horários<i class="fas fa-search" style="margin-left: 6px;"></i></a>
-                        <!-- End: button_student_profile_see_reservation -->
-                    </li>
-                    <li class="nav-item"></li>
-                    <li class="nav-item">
-                        <!-- Start: button_help --><a class="nav-link" id="button_help" href="#">Ajuda<i class="icon ion-help-circled" style="margin-left: 6px;"></i></a>
-                        <!-- End: button_help -->
-                    </li>
-                    <li class="nav-item">
-                        <!-- Start: button_student_profile_exit --><a class="btn btn-light Logout" role="button" id="button_student_profile_exit" href="#" style="background: #e32e2e;border-color: rgba(255,255,255,0);border-left-style: none;color: rgb(255,255,255);width: 80px;">Sair<i class="icon ion-android-exit" style="margin-left: 6px;"></i></a>
-                        <!-- End: button_student_profile_exit -->
-                    </li>
-                </ul>
-        </div>
-        </div>
-    </nav>
-    <!-- End: Navigation Clean -->
-    <div class="container" style="margin-bottom: 64px;">
+{% extends 'components/base.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'assets/css/calendar.min.css' %}">
+{% endblock css %}
+{% block nav %}
+    <li class="nav-item">
+        <a class="nav-link" id="button_student_profile_edit_profile" href="{% url 'students:edit_profile_student' %}">
+            Editar informações
+            <i class="ion ion-person ml-1"></i>
+        </a><!-- End: button_student_profile_edit_profile -->
+    </li>
+{% endblock nav %}
+{% block body %}
+    <div class="container">
         <div class="row">
-            <div class="col text-center" style="margin-top: 64px;margin-bottom: 64px;">
+            <div class="col text-center mt-4">
                 <h1>Área Discente</h1>
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-auto">
-                <div class="form-group" style="border-style: solid;"><span id="label_student_profile_name" style="font-size: 32px;padding: 5px;">student_name</span></div>
-                <div style="width: 390px;">
-                    <!-- Start: Bootstrap Calendar --><div class="bootstrap_calendar">
-<div class="container py-5">
-
-
-  <!-- Calendar -->
-  <div class="calendar shadow bg-white p-5">
-    <div class="d-flex align-items-center"><i class="fa fa-calendar fa-3x mr-3"></i>
-      <h4 class="month font-weight-bold mb-0 text-uppercase">December 2019</h4>
-    </div>
-    <p class="font-italic text-muted mb-5">No events for this day.</p>
-    <ol class="day-names list-unstyled">
-      <li class="font-weight-bold text-uppercase">Sun</li>
-      <li class="font-weight-bold text-uppercase">Mon</li>
-      <li class="font-weight-bold text-uppercase">Tue</li>
-      <li class="font-weight-bold text-uppercase">Wed</li>
-      <li class="font-weight-bold text-uppercase">Thu</li>
-      <li class="font-weight-bold text-uppercase">Fri</li>
-      <li class="font-weight-bold text-uppercase">Sat</li>
-    </ol>
-
-    <ol class="days list-unstyled">
-      <li>
-        <div class="date">1</div>
-        <div class="event bg-success">Event with Long Name</div>
-      </li>
-      <li>
-        <div class="date">2</div>
-      </li>
-      <li>
-        <div class="date">3</div>
-      </li>
-      <li>
-        <div class="date">4</div>
-      </li>
-      <li>
-        <div class="date">5</div>
-      </li>
-      <li>
-        <div class="date">6</div>
-      </li>
-      <li>
-        <div class="date">7</div>
-      </li>
-      <li>
-        <div class="date">8</div>
-      </li>
-      <li>
-        <div class="date">9</div>
-      </li>
-      <li>
-        <div class="date">10</div>
-      </li>
-      <li>
-        <div class="date">11</div>
-      </li>
-      <li>
-        <div class="date">12</div>
-      </li>
-      <li>
-        <div class="date">13</div>
-        <div class="event all-day begin span-2 bg-warning">Event Name</div>
-      </li>
-      <li>
-        <div class="date">14</div>
-      </li>
-      <li>
-        <div class="date">15</div>
-        <div class="event all-day end bg-success">Event Name</div>
-      </li>
-      <li>
-        <div class="date">16</div>
-      </li>
-      <li>
-        <div class="date">17</div>
-      </li>
-      <li>
-        <div class="date">18</div>
-      </li>
-      <li>
-        <div class="date">19</div>
-      </li>
-      <li>
-        <div class="date">20</div>
-      </li>
-      <li>
-        <div class="date">21</div>
-        <div class="event bg-primary">Event Name</div>
-        <div class="event bg-success">Event Name</div>
-      </li>
-      <li>
-        <div class="date">22</div>
-        <div class="event bg-info">Event with Longer Name</div>
-      </li>
-      <li>
-        <div class="date">23</div>
-      </li>
-      <li>
-        <div class="date">24</div>
-      </li>
-      <li>
-        <div class="date">25</div>
-      </li>
-      <li>
-        <div class="date">26</div>
-      </li>
-      <li>
-        <div class="date">27</div>
-      </li>
-      <li>
-        <div class="date">28</div>
-      </li>
-      <li>
-        <div class="date">29</div>
-      </li>
-      <li>
-        <div class="date">30</div>
-      </li>
-      <li>
-        <div class="date">31</div>
-      </li>
-      <li class="outside">
-        <div class="date">1</div>
-      </li>
-      <li class="outside">
-        <div class="date">2</div>
-      </li>
-      <li class="outside">
-        <div class="date">3</div>
-      </li>
-      <li class="outside">
-        <div class="date">4</div>
-      </li>
-    </ol>
-  </div>
-</div>
-</div>
-                    <!-- End: Bootstrap Calendar -->
+                <div class="form-group" style="border-style: solid;">
+                    <span id="label_student_profile_name" style="font-size: 32px;padding: 5px;">{{ request.user.get_short_name }}</span>
                 </div>
             </div>
-            <div class="col-auto">
-                <div class="form-group"><img src="assets/img/Logo-ufac.png" style="height: 256px;"></div>
+        </div>
+        <hr class="mb-5">
+            {% if messages %}{% include 'components/messages.html' %}{% endif %}
+        <div class="row">
+            <div class="col">
+                <div id="calendar"></div>
+
             </div>
         </div>
     </div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-</body>
+{% endblock body %}
+{% block js %}
+    <script src="{% static 'assets/js/calendar.min.js' %}"></script>
+    <script src="{% static 'assets/js/calendar-locales-all.min.js' %}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let calendarEl = document.getElementById('calendar');
+            let calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                headerToolbar: { end: '' },
+                events: [{% for e in object_list  %}{
+                        "id": "{{ e.id }}",
+                        "title": "{{ e.user }}",
+                        "start": "{{ e.get_start_date.isoformat }}",
+                        "end": "{{ e.get_end_date.isoformat }}",
+                        "url": "{{ e.get_absolute_url }}"
+                        }, {% endfor %}],
+                editable: true,
+                locale: 'pt-br'
 
-</html>
+            });
+            calendar.render();
+        });
+    </script>
+{% endblock js %}
