@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as DjangoUserAdmin
 from django.utils.translation import ugettext_lazy as _
 
-from .models import User, Teacher, Student
+from .models import User
 
 
 @admin.register(User)
@@ -48,5 +48,5 @@ class StudentAdmin(admin.ModelAdmin):
     list_filter = ('course', )
 
 
-admin.site.register(Teacher, TeacherAdmin)
-admin.site.register(Student, StudentAdmin)
+# admin.site.register(Teacher, TeacherAdmin)
+# admin.site.register(Student, StudentAdmin)

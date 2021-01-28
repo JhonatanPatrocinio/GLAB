@@ -1,0 +1,22 @@
+<div class="row mb-4 mt-2">
+    <div class="col">
+        <h3 class="text-uppercase text-success ls-1">Informações Gerais</h3>
+    </div>
+</div>
+<div class="row mb-4 mt-2">
+    <div class="col-sm-12 mb-2">
+        <span class="h3">Nome do Espaço: </span><span>{{ object.name }}</span>
+    </div>
+    <div class="col-sm-12 col-md-6 mb-2">
+        <span class="h3">Bloco: </span><span>{{ object.department.hall }} {% if object.department.hall.short_name %} ({{ object.department.hall.short_name }}){% endif %}</span>
+    </div>
+    <div class="col-sm-12 col-md-6 mb-2">
+        <span class="h3">Setor: </span><span>{{ object.department }}</span>
+    </div>
+    <div class="col-sm-12 mb-2">
+        <span class="h3">Tipo de Espaço: </span><span>{{ object.type }}</span>
+    </div>
+    <div class="col-sm-12 mb-2">
+        <span class="h3">Solicitado por: </span><span>{{ reservation.user.full_name }}</span>
+    </div>
+</div>

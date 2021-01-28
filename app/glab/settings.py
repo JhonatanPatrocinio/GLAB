@@ -17,7 +17,7 @@ DEFAULT_APPS = [
     'django.contrib.staticfiles',
 ]
 THIRD_PARTY_APPS = [
-
+    'django_filters'
 ]
 LOCAL_APPS = [
     'users',
@@ -52,6 +52,10 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'libraries': {
+                'active': 'base.templatetags.active',
+                'get_verbose_name': 'base.templatetags.get_verbose_name'
+},
         },
     },
 ]
@@ -83,7 +87,7 @@ LANGUAGE_CODE = 'pt-br'
 TIME_ZONE = 'America/Rio_Branco'
 USE_I18N = True
 USE_L10N = True
-USE_TZ = True
+USE_TZ = False
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),

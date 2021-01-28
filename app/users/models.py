@@ -44,7 +44,7 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin):
     id = models.UUIDField('ID', default=uuid.uuid4, primary_key=True)
     email = models.EmailField(
-        _('Email Institucional'), unique=True, error_messages={
+        _('Email'), unique=True, error_messages={
             'unique': _("Já existe um usuário com este email.")
         }
     )
@@ -77,56 +77,5 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.full_name.split()[0]
 
     @property
-    def get_type(self):
-        if self.teacher_set.exists():
-            return 'T'
-        elif self.student_set.exists():
-            return 'S'
-        elif self.is_staff:
-            return 'A'
-        else:
-            return None
-
-    def get_user_url(self):
-        type_user = self.get_type
-        if type_user == 'T':
-            return reverse_lazy('teacher:dashboard_teacher')
-        elif type_user == 'S':
-            return reverse_lazy('students:dashboard_student')
-        else:
-            return reverse_lazy('admin:index')
-
-
-class Teacher(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_('Username'), related_name='teacher_set')
-    registry = models.CharField(_('Matricula'), max_length=11, validators=[RegexValidator(r'\D', inverse_match=True)])
-    academic_center = models.ForeignKey(
-        'base.AcademicCenter', related_name='teacher_set', verbose_name=_('Centro Acadêmico'),
-        on_delete=models.PROTECT
-    )
-
-    class Meta:
-        ordering = ['user']
-        verbose_name = _('Professor')
-        verbose_name_plural = _('Professores')
-
-    def __str__(self):
-        return f'{self.user.full_name}'
-
-
-class Student(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_('User'), related_name='student_set')
-    registry = models.CharField(_('Matricula'), max_length=11, validators=[RegexValidator(r'\D', inverse_match=True)])
-    course = models.ForeignKey(
-        'base.Course', verbose_name=_('Curso'), on_delete=models.PROTECT, related_name='student_set'
-    )
-
-    class Meta:
-        ordering = ['user']
-        verbose_name = _('Aluno')
-        verbose_name_plural = _('Alunos')
-
-    def __str__(self):
-        return f'{self.user.full_name}'
-
-
+    def get_requester(self):
+        return self.requester_set

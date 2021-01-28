@@ -1,0 +1,64 @@
+{% extends 'components/fullscreen/base-fullscreen.html' %}
+{% load static %}
+{% block title %}- Cadastro de Solicitante{% endblock title %}
+{% block content %}
+    <div class="container mt--7 pb-6">
+        <div class="row justify-content-center">
+            <div class="col">
+                <div class="card bg-secondary shadow border-0">
+                    <div class="card-header bg-transparent">
+                        <div class="text-center">
+                            <img src="{% static 'img/Glab.png' %}" alt="LOGO GLAB" height="100" width="100">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-center text-muted ">
+                            {% if messages %}{% include 'components/messages.html' %}{% endif %}
+                            {% if form.non_field_errors %}
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {% for error in form.non_field_errors %}
+                                        <strong>{{ error }}</strong>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <form class="needs-validation" novalidate method="POST">
+                            {% csrf_token %}
+                            <h2 class="text-success">Informações Básicas</h2>
+                            {% include 'accounts/form_register.html' with form=form form_requester=form_requester %}
+                            <div class="row justify-content-center">
+                                <a class="btn-info btn" href="{% url 'login' %}">Voltar</a>
+                                <button type="submit" class="btn-success btn">Cadastrar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block javascripts %}
+    <script>
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+{% endblock javascripts %}

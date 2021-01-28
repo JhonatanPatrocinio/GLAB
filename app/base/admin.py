@@ -1,47 +1,73 @@
 from django.contrib import admin
+from django.utils.translation import gettext_lazy as _
 
-from .models import Laboratory, Reservation, AcademicCenter, Course
+from base.models import Hall, Department, TypePlace, Place, Reservation
 
 
-class LaboratoryAdmin(admin.ModelAdmin):
-    list_display = ('name', 'n_computers', 'capacity')
+class HallAdmin(admin.ModelAdmin):
+    list_display = ('full_name', 'short_name')
+
+    class Meta:
+        fields = '__all__'
+
+
+class DepartmentAdmin(admin.ModelAdmin):
+    list_display = ('name', 'hall', 'maintainer', 'contact')
+
+    class Meta:
+        fields = '__all__'
+
+
+class TypePlaceAdmin(admin.ModelAdmin):
+    list_display = ('name', )
+
+    class Meta:
+        fields = '__all__'
+
+
+class PlaceAdmin(admin.ModelAdmin):
+    list_display = ('name', 'type', 'department')
+
+    fieldsets = (
+        (_('Informações Básicas'), {'fields': ('name', 'type', 'department', 'map_link', 'is_active')}),
+        (_('Informações sobre o Espaço'), {
+            'classes': ('wide', ),
+            'fields': ('capacity', 'is_washroom', 'is_water', 'is_air_conditioner', 'is_board', 'is_projector'),
+        }),
+        (_('Informações sobre Laboratório'), {
+            'classes': ('wide', ),
+            'fields': ('n_computers', 'is_internet')
+        }),
+        (_('Informações sobre Auditório'), {
+            'classes': ('wide', ),
+            'fields': ('is_soundbox', )
+        }),
+        (_('Informações sobre Quadra'), {
+            'classes': ('wide', ),
+            'fields': ('is_bleachers', 'is_roof', 'type_court')
+        }),
+    )
+
 
     class Meta:
         fields = '__all__'
 
 
 class ReservationAdmin(admin.ModelAdmin):
-    list_display = ('user', 'laboratory', 'date', 'initial_time', 'end_time', 'status')
-    search_fields = ('user', 'laboratory', 'date')
-    list_filter = ('laboratory', 'status')
-    readonly_fields = ('update_at', )
+    list_display = ('user', 'place', 'date', 'initial_time', 'end_time', 'status')
+    search_fields = ('user', 'place', 'date')
+    list_filter = ('place', 'status')
+    readonly_fields = ('update_at', 'user', 'place', 'date', 'initial_time', 'end_time', 'phone', 'reason', 'obs')
 
     class Meta:
         fields = '__all__'
 
 
-class AcademicCenterAdmin(admin.ModelAdmin):
-    list_display = ('name', 'shortening')
-    search_fields = ('name', 'shortening')
-    readonly_fields = ('update_at', )
-
-    class Meta:
-        fields = '__all__'
-
-
-class CourseAdmin(admin.ModelAdmin):
-    list_display = ('name', 'cod')
-    search_fields = ('name', 'cod')
-    readonly_fields = ('update_at', )
-
-    class Meta:
-        fields = '__all__'
-
-
-admin.site.register(Course, CourseAdmin)
-admin.site.register(AcademicCenter, AcademicCenterAdmin)
+admin.site.register(Hall, HallAdmin)
+admin.site.register(Department, DepartmentAdmin)
+admin.site.register(TypePlace, TypePlaceAdmin)
+admin.site.register(Place, PlaceAdmin)
 admin.site.register(Reservation, ReservationAdmin)
-admin.site.register(Laboratory, LaboratoryAdmin)
 
 
 admin.site.site_header = 'GLAB :: Painel Administrativo'

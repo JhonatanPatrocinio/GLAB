@@ -1,0 +1,38 @@
+{% if form_requester.non_field_errors %}
+    <div class="alert alert-danger" role="alert">
+        {% for error in form_requester.non_field_errors %}
+            <strong>{{ error }}</strong>
+        {% endfor %}
+    </div>
+{% endif %}
+{% if form.non_field_errors %}
+    <div class="alert alert-danger" role="alert">
+        {% for error in form.non_field_errors %}
+            <strong>{{ error }}</strong>
+        {% endfor %}
+    </div>
+{% endif %}
+<div class="form-row">
+    {% for f in form_requester.hidden_fields %}
+        {{ f }}
+    {% endfor %}
+</div>
+<div class="form-row">
+    <label class="form-control-label">Email</label>
+    <input type="email" value="{{ object.email }}" id="id_email" class="form-control mb-3" disabled>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-6">
+        {% include 'components/fields/field.html' with field=form_requester.registry text_validated='Por favor, selecione sua matricula.' %}
+    </div>
+    <div class="form-group col-md-6">
+        {% include 'components/fields/field.html' with field=form_requester.department text_validated='Por favor, selecione seu local de trabalho.' %}
+    </div>
+</div>
+
+<div class="form-row">
+    <div class="form-group col">
+        {% include 'components/fields/field.html' with field=form.full_name text_validated='Por favor, forneça seu nome completo.' %}
+    </div>
+</div>
+

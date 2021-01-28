@@ -1,0 +1,51 @@
+{% extends 'components/fullscreen/base-fullscreen.html' %}
+{% load static %}
+{% load get_verbose_name %}
+{% block content %}
+    <div class="container-fluid mt--7">
+        <div class="row mb-3">
+            <div class="col-12">
+                <div class="card shadow">
+                    <div class="card-header bg-transparent">
+                        <div class="row">
+                            <div class="col-6">
+                                <h2 class="mb-0">Espaço Reservado</h2>
+                            </div>
+                            {% if request.user.is_authenticated %}
+                                <div class="col-6 text-right">
+                                    <a class="btn btn-outline-info" href="{% url 'dashboard' %}">
+                                        <span>Voltar</span>
+                                    </a>
+                                </div>
+                            {% else %}
+                                <div class="col-6 text-right">
+                                    <a class="btn btn-outline-info" href="{% url 'index' %}">
+                                        <span>Voltar</span>
+                                    </a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        {% include 'info_place_off.html' with object=object.place reservation=object %}
+                        <div class="row mb-4">
+                            <div class="col-sm-12 col-md-4 mb-2">
+                                <span class="h3">Dia: </span><span>{{ object.date }}</span>
+                            </div>
+                            <div class="col-sm-12 col-md-4 mb-2">
+                                <span class="h3">{% get_verbose_field_name object "initial_time" %}: </span><span>{{ object.initial_time }}</span>
+                            </div>
+                            <div class="col-sm-12 col-md-4 mb-2">
+                                <span class="h3">{% get_verbose_field_name object "end_time" %}: </span><span>{{ object.end_time }}</span>
+                            </div>
+
+                            <div class="col-sm-12 mb-2">
+                                <span class="h3">{% get_verbose_field_name object "reason" %}: </span><span>{{ object.reason }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

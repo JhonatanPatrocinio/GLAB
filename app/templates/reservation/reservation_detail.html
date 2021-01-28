@@ -1,0 +1,88 @@
+{% extends 'components/dashboard/base.html' %}
+{% load get_verbose_name %}
+{% block content %}
+    <div class="header bg-gradient-primary pb-8 pt-5 pt-md-6">
+    </div>
+    <div class="container-fluid mt--7">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-6 d-flex">
+                                    <h1 class="h1">Reserva de {{ request.user.get_short_name }}</h1>
+                                </div>
+                                {% if not object.status != object.RESPONSE_ACCEPTED or not object.status != object.RESPONSE_WAITING %}
+                                    <div class="col-6 text-right">
+                                        <a class="btn btn-outline-danger" onclick="btnValidar()">
+                                            <span>Desistir</span>
+                                        </a>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm">
+                                    {% include 'reservation/info_place.html' with object=object.place %}
+                                </div>
+                            </div>
+                            {% if messages %}{% include 'components/messages.html' %}{% endif %}
+
+                            <div class="row mb-4 mt-4">
+                                <div class="col-sm-12 mb-2">
+                                    <span class="h3">{% get_verbose_field_name object "phone" %}: </span><span>{{ object.phone }}</span>
+                                </div>
+                                <div class="col-sm-12 col-md-4 mb-2">
+                                    <span class="h3">Dia: </span><span>{{ object.date }}</span>
+                                </div>
+                                <div class="col-sm-12 col-md-4 mb-2">
+                                    <span class="h3">{% get_verbose_field_name object "initial_time" %}: </span><span>{{ object.initial_time }}</span>
+                                </div>
+                                <div class="col-sm-12 col-md-4 mb-2">
+                                    <span class="h3">{% get_verbose_field_name object "end_time" %}: </span><span>{{ object.end_time }}</span>
+                                </div>
+                                <div class="col-sm-12 mb-2">
+                                    <span class="h3">{% get_verbose_field_name object "status" %}: </span><span class="{{ object.get_text_status_color }}">{{ object.get_status_display }}</span>
+                                </div>
+                                <div class="col-sm-12 col-md-6 mb-2">
+                                    <span class="h3">Solicitado em: </span><span>{{ object.created_at }}</span>
+                                </div>
+                                <div class="col-sm-12 mb-2">
+                                    <span class="h3">{% get_verbose_field_name object "reason" %}: </span><span>{{ object.reason }}</span>
+                                </div>
+                                <div class="col-sm-12 mb-2">
+                                    <span class="h3">{% get_verbose_field_name object "obs" %}: </span><span>{{ object.obs }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <form id="form_delete" method="post" action="{% url 'reservation:reservation_leave' object.id %}">
+                            {% csrf_token %}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block javascripts %}
+    <script type="text/javascript">
+        function btnValidar (){
+            Swal.fire({
+                title: "Deseja desistir dessa solicitação?",
+                type: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'SIM!',
+                cancelButtonText: 'NÃO!'
+            }).then((result) => {
+                if (result.value) {
+                    $( "#form_delete").submit();
+                }
+            })
+        }
+    </script>
+{% endblock javascripts %}

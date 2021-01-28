@@ -4,39 +4,42 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from users.views import (
-    LoginView, LogoutView, ChoiceSignUpView, TeacherSignUpView, StudentSignUpView, StudentEditProfileView,
-    TeacherEditProfileView
+    LoginView, LogoutView, SignUpView, EditProfileView, DetailProfileView, ChangePasswordView
 )
-from base.views import DashboardStudentView, DashboardTeacherView, ReservationCreateView
+from base.views import (
+    DashboardView, ReservationCreateView, ReservationListView, ReservationDetailView, ChoicePlaceView,
+    LeaveReservationView, IndexView, ReservationView
+)
 
 
-signup_patterns = ([
-    path('', ChoiceSignUpView.as_view(), name='choice_signup'),
-    path('teacher/', TeacherSignUpView.as_view(), name='teacher_signup'),
-    path('student/', StudentSignUpView.as_view(), name='student_signup'),
-], 'signup')
 
-student_patterns = ([
-    path('', DashboardStudentView.as_view(), name='dashboard_student'),
-    path('profile/', StudentEditProfileView.as_view(), name='edit_profile_student')
+reservation_patterns = ([
+    path('', ReservationListView.as_view(), name='reservation_list'),
+    path('create/<int:place_id>', ReservationCreateView.as_view(), name='reservation_create'),
+    path('detail/<int:pk>/', ReservationDetailView.as_view(), name='reservation_detail'),
+    path('choice_place/', ChoicePlaceView.as_view(), name='reservation_choice_place'),
+    path('delete/<int:pk>', LeaveReservationView.as_view(), name='reservation_leave'),
 
-], 'students')
+], 'reservation')
 
-teacher_patterns = ([
-    path('', DashboardTeacherView.as_view(), name='dashboard_teacher'),
-    path('profile/', TeacherEditProfileView.as_view(), name='edit_profile_teacher'),
-    path('reservation/', ReservationCreateView.as_view(), name='reservation_create_teacher')
+profile_patterns = ([
+    path('', DetailProfileView.as_view(), name='detail_profile'),
+    path('update/', EditProfileView.as_view(), name='update_profile'),
+    path('change_password/', ChangePasswordView.as_view(), name='change_password')
 
-], 'teacher')
+], 'profile')
+
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
-    path('', LoginView.as_view(), name='login'),
+    path('login/', LoginView.as_view(), name='login'),
+    path('', IndexView.as_view(), name='index'),
+    path('view/<int:pk>', ReservationView.as_view(), name='view_reservation'),
     path('logout/', LogoutView.as_view(), name='logout'),
-    path('signup/', include(signup_patterns)),
-    path('student/', include(student_patterns)),
-    path('teacher/', include(teacher_patterns))
-
+    path('signup/', SignUpView.as_view(), name='signup'),
+    path('dashboard/', DashboardView.as_view(), name='dashboard'),
+    path('reservation/', include(reservation_patterns)),
+    path('profile/', include(profile_patterns)),
 ]
 
 if settings.DEBUG:

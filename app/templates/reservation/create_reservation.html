@@ -1,0 +1,77 @@
+{% extends 'components/dashboard/base.html' %}
+{% load static %}
+{% block title %} Solicitar Reserva{% endblock title %}
+{% block content %}
+    <div class="header bg-gradient-primary pb-8 pt-5 pt-md-6">
+    </div>
+    <div class="container-fluid mt--7">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-6 d-flex">
+                                    <h1 class="h1">Solicitar Espaço # {{ object_place.name|slice:40 }}</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm">
+                                    {% include 'reservation/info_place.html' with object=object_place%}
+                                </div>
+                            </div>
+                            {% if messages %}{% include 'components/messages.html' %}{% endif %}
+
+                            <div class="row mb-4 mt-4">
+                                <div class="col">
+                                    <form class="needs-validation" novalidate method="POST">
+                                        {% csrf_token %}
+                                        {% include 'reservation/form_reservation.html' with form=form %}
+                                        <div class="text-center">
+                                            <a type="button" id="button_update_teacher_submit" href="{% url 'reservation:reservation_choice_place' %}" class="btn btn-secondary">Voltar</a>
+                                            <button type="submit" id="button_update_teacher_submit" class="btn btn-primary">Solicitar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block javascripts %}
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+    <!-- Mask Validations Plugin -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.telefone').mask('(00) 00000-0000');
+        });
+
+    </script>
+    <script src="{% static 'assets/js/jquery.mask.js' %}"></script>
+
+{% endblock javascripts %}

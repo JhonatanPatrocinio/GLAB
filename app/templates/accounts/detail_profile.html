@@ -1,0 +1,71 @@
+{% extends 'components/dashboard/base.html' %}
+{% load get_verbose_name %}
+{% block content %}
+    <div class="header bg-gradient-primary pb-8 pt-5 pt-md-6">
+    </div>
+    <div class="container-fluid mt--7">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-6 d-flex">
+                                    <h1 class="h1">Meus Dados</h1>
+                                </div>
+                                <div class="col-6 text-right">
+                                    <a class="btn btn-outline-primary" href="{% url 'profile:change_password' %}">
+                                        <span>Alterar minha Senha</span>
+                                    </a>
+                                    <a class="btn btn-outline-primary" href="{% url 'profile:update_profile' %}">
+                                        <span>Atualizar Dados</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            {% if messages %}{% include 'components/messages.html' %}{% endif %}
+                            <div class="row mb-4 mt-4">
+                                <div class="col-sm-12 col-md-6 mb-2">
+                                    <span class="h3">{% get_verbose_field_name object "email" %}: </span><span>{{ object.email }}</span>
+                                </div>
+                                <div class="col-sm-12 col-md-6 mb-2">
+                                    <span class="h3">{% get_verbose_field_name object "full_name" %}: </span><span>{{ object.full_name }}</span>
+                                </div>
+                                <div class="col-sm-12 col-md-6 mb-2">
+                                    <span class="h3">{% get_verbose_field_name object.requester_set "registry" %}: </span><span>{{ object.requester_set.registry }}</span>
+                                </div>
+                                <div class="col-sm-12 col-md-6 mb-2">
+                                    <span class="h3">{% get_verbose_field_name object.requester_set "department" %}: </span><span>{{ object.requester_set.department }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block javascripts %}
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+{% endblock javascripts %}

@@ -1,0 +1,117 @@
+<div class="row mb-4 mt-2">
+    <div class="col">
+        <h3 class="text-uppercase text-success ls-1">Informações Gerais</h3>
+    </div>
+</div>
+<div class="row mb-4 mt-2">
+    <div class="col-sm-12 mb-2">
+        <span class="h3">Nome do Espaço: </span><span>{{ object.name }}</span>
+    </div>
+    <div class="col-sm-12 col-md-6 mb-2">
+        <span class="h3">Bloco: </span><span>{{ object.department.hall }} {% if object.department.hall.short_name %} ({{ object.department.hall.short_name }}){% endif %}</span>
+    </div>
+    <div class="col-sm-12 col-md-6 mb-2">
+        <span class="h3">Setor: </span><span>{{ object.department }}</span>
+    </div>
+    <div class="col-sm-12 mb-2">
+        <span class="h3">Tipo de Espaço: </span><span>{{ object.type }}</span>
+    </div>
+    <div class="col-sm-12 col-md-6 mb-2">
+        <span class="h3">Responsável: </span><span>{{ object.department.maintainer }}</span>
+    </div>
+    <div class="col-sm-12 col-md-6 mb-2">
+        <span class="h3">Contato: </span><span>{{ object.department.contact }}</span>
+    </div>
+    <div class="col-sm-12 mb-2">
+        <span class="h3">Capacidade de Pessoas: </span><span>{{ object.capacity }}</span>
+    </div>
+    {% if object.type.get_type == 'L'%}
+        <div class="col-sm-12 mb-2">
+            <span class="h3">Número de Computadores: </span><span>{{ object.n_computers }}</span>
+        </div>
+    {% endif %}
+    {% if object.type.get_type == 'Q'%}
+        <div class="col-sm-12 mb-2">
+            <span class="h3">Tipo de Quadra: </span><span>{{ object.get_type_court_display }}</span>
+        </div>
+    {% endif %}
+</div>
+<div class="row mb-4 mt-4">
+    <div class="col">
+        <h3 class="text-uppercase text-success ls-1 ml-2">Outras Informações</h3>
+    </div>
+</div>
+<div class="row mb-4 mt-4">
+    <div class="col-sm-12 col-md-4 mb-2 d-flex">
+        {% if object.is_air_conditioner %}
+            <span class="h3">Ar Condicionado: </span><span class="h1"><i class="ni ni-check-bold text-success"></i></span>
+        {% else %}
+            <span class="h3">Ar Condicionado: </span><span class="h1"><i class="ni ni-fat-remove text-danger"></i></span>
+        {% endif %}
+    </div>
+    <div class="col-sm-12 col-md-4 mb-2 d-flex">
+        {% if object.is_water %}
+            <span class="h3">Bebedouro: </span><span class="h1"><i class="ni ni-check-bold text-success"></i></span>
+        {% else %}
+            <span class="h3">Bebedouro: </span><span class="h1"><i class="ni ni-fat-remove text-danger"></i></span>
+        {% endif %}
+    </div>
+    <div class="col-sm-12 col-md-4 mb-2 d-flex">
+        {% if object.is_washroom %}
+            <span class="h3">Banheiro: </span><span class="h1"><i class="ni ni-check-bold text-success"></i></span>
+        {% else %}
+            <span class="h3">Banheiro: </span><span class="h1"><i class="ni ni-fat-remove text-danger"></i></span>
+        {% endif %}
+    </div>
+    {% if not object.type.get_type == 'Q' %}
+        <div class="col-sm-12 col-md-4 mb-2 d-flex">
+            {% if object.is_board %}
+                <span class="h3">Quadro Branco: </span><span class="h1"><i class="ni ni-check-bold text-success"></i></span>
+            {% else %}
+                <span class="h3">Quadro Branco: </span><span class="h1"><i class="ni ni-fat-remove text-danger"></i></span>
+            {% endif %}
+        </div>
+    <div class="col-sm-12 col-md-4 mb-2 d-flex">
+        {% if object.is_projector %}
+            <span class="h3">Projetor: </span><span class="h1"><i class="ni ni-check-bold text-success"></i></span>
+        {% else %}
+            <span class="h3">Projetor: </span><span class="h1"><i class="ni ni-fat-remove text-danger"></i></span>
+        {% endif %}
+    </div>
+    {% endif %}
+    {% if object.type.get_type == 'A'%}
+        <div class="col-sm-12 col-md-4 mb-2 d-flex">
+            {% if object.is_soundbox %}
+                <span class="h3">Caixa de Som: </span><span class="h1"><i class="ni ni-check-bold text-success"></i></span>
+            {% else %}
+                <span class="h3">Caixa de Som: </span><span class="h1"><i class="ni ni-fat-remove text-danger"></i></span>
+            {% endif %}
+        </div>
+    {% endif %}
+    {% if object.type.get_type == 'L' %}
+        <div class="col-sm-12 col-md-4 mb-2 d-flex">
+            {% if object.is_internet %}
+                <span class="h3">Internet: </span><span class="h1"><i class="ni ni-check-bold text-success"></i></span>
+            {% else %}
+                <span class="h3">Internet: </span><span class="h1"><i class="ni ni-fat-remove text-danger"></i></span>
+            {% endif %}
+        </div>
+    {% endif %}
+    {% if object.type.get_type == 'Q'%}
+        <div class="col-sm-12 col-md-4 mb-2 d-flex">
+            {% if object.is_bleachers %}
+                <span class="h3">Arquibancada: </span><span class="h1"><i class="ni ni-check-bold text-success"></i></span>
+            {% else %}
+                <span class="h3">Arquibancada: </span><span class="h1"><i class="ni ni-fat-remove text-danger"></i></span>
+            {% endif %}
+        </div>
+        <div class="col-sm-12 col-md-4 mb-2 d-flex">
+            {% if object.is_roof %}
+                <span class="h3">Cobertura: </span><span class="h1"><i class="ni ni-check-bold text-success"></i></span>
+            {% else %}
+                <span class="h3">Cobertura: </span><span class="h1"><i class="ni ni-fat-remove text-danger"></i></span>
+            {% endif %}
+        </div>
+    {% endif %}
+</div>
+<hr>

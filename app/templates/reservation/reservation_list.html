@@ -1,0 +1,62 @@
+{% extends 'components/dashboard/base.html' %}
+{% block title %} Minhas Reservas{% endblock title %}
+{% block content %}
+
+    <div class="header bg-gradient-primary pb-8 pt-5 pt-md-6">
+        <div class="container-fluid">
+            <div class="header-body">
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid mt--7">
+        <div class="row">
+            <div class="col-12">
+                <div class="card shadow">
+                    <div class="card-header bg-transparent">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h2 class="mb-0">Minhas Reservas</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        {% if messages %}{% include 'components/messages.html' %}{% endif %}
+                        <div class="table-responsive">
+                            <table class="table align-items-center table-flush">
+                                <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">Espaço</th>
+                                    <th scope="col">Data e Hora</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Ações</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for row in object_list %}
+                                    <tr>
+                                        <th scope="row">
+                                            {{ row.place }}
+                                        </th>
+                                        <td>
+                                            <span>{{ row.get_date_display }}</span>
+                                        </td>
+                                        <td>
+                                            <span class="{{ row.get_text_status_color }}">{{ row.get_status_display }}</span>
+                                        </td>
+                                        <td class="col-2">
+                                            <a class="btn btn-icon btn-outline-primary" href="{% url 'reservation:reservation_detail' row.id %}">
+                                                <i class="ni ni-world-2"></i>
+                                                Ver
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,46 @@
+{% extends 'components/fullscreen/base-fullscreen.html' %}
+{% load static %}
+{% block title %}- Login{% endblock title %}
+{% block content %}
+    <div class="container mt--9 pb-6">
+        <div class="row justify-content-center">
+            <div class="col-lg-5 col-md-7">
+                <div class="card bg-secondary shadow border-0">
+                    <div class="card-header bg-transparent">
+                        <div class="text-center">
+                            <img src="{% static 'img/Glab.png' %}" alt="LOGO GLAB" height="90" width="130">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-center text-muted ">
+                            {% if messages %}{% include 'components/messages.html' %}{% endif %}
+                            {% if form.non_field_errors %}
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {% for error in form.non_field_errors %}
+                                        <strong>{{ error }}</strong>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                {% include 'components/fields/input_with_icon.html' with field=form.username icon='ni ni-hat-3' %}
+                            </div>
+                            <div class="form-group">
+                                {% include 'components/fields/input_with_icon.html' with field=form.password icon='ni ni-lock-circle-open' %}
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary my-4">Entrar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+

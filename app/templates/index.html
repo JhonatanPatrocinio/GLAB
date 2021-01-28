@@ -1,0 +1,99 @@
+{% extends 'components/fullscreen/base-fullscreen.html' %}
+{% load static %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static 'assets/css/calendar.min.css' %}">
+{% endblock %}
+{% block content %}
+
+    <div class="container-fluid mt--7">
+        <div class="row mb-3">
+            <div class="col-12">
+                <div class="card shadow">
+                    <div class="card-header bg-transparent">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h6 class="text-uppercase text-muted ls-1 mb-1">Calendário Semanal</h6>
+                                <h2 class="mb-0">Espaços reservados</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table align-items-center table-flush">
+                                <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">Espaço</th>
+                                    <th scope="col">Data</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for row in this_week %}
+                                    <tr>
+                                        <th scope="row">
+                                            {{ row.place }}
+                                        </th>
+                                        <td>
+                                            {{ row.date }}
+                                        </td>
+                                    </tr>
+                                {% empty %}
+                                    <tr>
+                                        <th scope="row" class="text-uppercase">
+                                            Sem reservas
+                                        </th>
+                                        <td>
+                                            --
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-12 mb-2 mb-xl-0">
+                <div class="card bg-gradient-white shadow">
+                    <div class="card-header bg-transparent">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h6 class="text-uppercase text-muted ls-1 mb-1">Calendário Mensal</h6>
+                                <h2 class="mb-0">Espaços reservados</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="calendar" ></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+{% block javascripts %}
+    <script src="{% static 'assets/js/calendar.min.js' %}"></script>
+    <script src="{% static 'assets/js/calendar-locales.min.js' %}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let calendarEl = document.getElementById('calendar');
+            let calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                headerToolbar: { end: '' },
+                events: [{% for e in this_month  %}{
+                        "id": "{{ e.id }}",
+                        "title": "{{ e.user }}",
+                        "start": "{{ e.get_start_date.isoformat }}",
+                        "end": "{{ e.get_end_date.isoformat }}",
+                        "url": "{{ e.get_absolute_url }}"
+                        }, {% endfor %}],
+                editable: true,
+                locale: 'pt-br',
+                themeSystem: 'standard',
+                height: 650
+            });
+            calendar.render();
+        });
+    </script>
+{% endblock javascripts %}
